@@ -2,6 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.universityairlines">
 
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -10,12 +12,15 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.UniversityAirlines">
         <activity
-            android:name=".RegistrationActivity"
+            android:name=".RegistrationActivity" />
+        <activity
+            android:name=".login.LoginActivity"
             android:exported="false" />
         <activity android:name=".booking.BookingActivity" />
         <activity
             android:name=".MainActivity"
             android:exported="false" />
+        <activity android:name=".HomepageActivity" />
         <activity
             android:name=".SplashActivity"
             android:exported="true">
