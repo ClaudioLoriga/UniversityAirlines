@@ -4,4 +4,9 @@
     <string name="hint_destinazione">Destinazione</string>
     <string name="hint_andata">Andata</string>
     <string name="hint_ritorno">Ritorno</string>
+    <string name="hint_email">E-mail</string>
+    <string name="hint_password">Password</string>
+    <string name="login">Login</string>
+    <string name="no_account_register">Non hai un account? Registrati</string>
+    <string name="registrazione">Registrazione</string>
 </resources>
