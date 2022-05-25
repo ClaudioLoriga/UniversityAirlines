@@ -9,4 +9,5 @@
     <string name="login">Login</string>
     <string name="no_account_register">Non hai un account? Registrati</string>
     <string name="registrazione">Registrazione</string>
+    <string name="welcome_user">Ciao, %1$s \n\nEsplora</string>
 </resources>
