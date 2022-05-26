@@ -12,7 +12,8 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.UniversityAirlines">
         <activity
-            android:name=".RegistrationActivity" />
+            android:name=".RegistrationActivity"
+            android:parentActivityName=".login.LoginActivity" />
         <activity
             android:name=".login.LoginActivity"
             android:exported="false" />
