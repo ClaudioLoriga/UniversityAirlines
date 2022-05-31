@@ -8,10 +8,10 @@ import androidx.lifecycle.lifecycleScope
 import com.example.universityairlines.HomepageActivity
 import com.example.universityairlines.HomepageActivity.Companion.EXTRAKEY
 import com.example.universityairlines.R
-import com.example.universityairlines.RegistrationActivity
+import com.example.universityairlines.registration.RegistrationActivity
 import com.example.universityairlines.UserRepository
 import com.example.universityairlines.databinding.LoginLayoutBinding
-import com.example.universityairlines.model.ApiResult
+import com.example.universityairlines.model.ApiLoginResult
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import kotlinx.coroutines.launch
 import retrofit2.Retrofit
@@ -54,13 +54,13 @@ class LoginActivity : AppCompatActivity() {
            val pwd = binding.edittextpassword.text.toString()
 
            when (val result = userRepository.getUser(mail, pwd)) {
-               is ApiResult.Success -> {
+               is ApiLoginResult.Success -> {
                    // navigate to next screen with data
                    val intent = Intent(this@LoginActivity, HomepageActivity::class.java)
                    intent.putExtra(EXTRAKEY, result.value.firstName)
                    startActivity(intent)
                }
-               is ApiResult.Failure -> {
+               is ApiLoginResult.Failure -> {
                    // show error
                    MaterialAlertDialogBuilder(this@LoginActivity)
                        .setTitle("404 NOT FOUND")

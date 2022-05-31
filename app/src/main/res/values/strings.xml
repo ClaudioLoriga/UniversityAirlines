@@ -1,5 +1,7 @@
 <resources>
     <string name="app_name">University Airlines</string>
+    <string name="registration_text">Registrazione avvenuta con successo!</string>
+    <string name="subRegistration_text">Congratulazioni per esserti unito a Univrsity Airlines!</string>
     <string name="hint_origine">Origine</string>
     <string name="hint_destinazione">Destinazione</string>
     <string name="hint_andata">Andata</string>
@@ -9,5 +11,6 @@
     <string name="login">Login</string>
     <string name="no_account_register">Non hai un account? Registrati</string>
     <string name="registrazione">Registrazione</string>
+    <string name="terminiecondizioni">Confermo di aver letto il regolamento e accetto i %2$s</string>
     <string name="welcome_user">Ciao, %1$s \n\nEsplora</string>
 </resources>
