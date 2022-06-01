@@ -17,11 +17,6 @@ import retrofit2.converter.jackson.JacksonConverterFactory
 
 class RegistrationActivity : AppCompatActivity() {
     private lateinit var binding: ActivityRegistrationBinding
-    private var retrofit: Retrofit =
-        Retrofit.Builder()
-            .baseUrl("https://universityairlines.altervista.org")
-            .addConverterFactory(JacksonConverterFactory.create()).build()
-    private var userRepository: UserRepository = UserRepository(retrofit)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -34,9 +29,7 @@ class RegistrationActivity : AppCompatActivity() {
 
         //Torna indietro nell'activity del login
         val actionBar = supportActionBar
-        if (actionBar != null) {
-            actionBar.setDisplayHomeAsUpEnabled(true)
-        }
+        actionBar?.setDisplayHomeAsUpEnabled(true)
 
     }
 
@@ -47,7 +40,7 @@ class RegistrationActivity : AppCompatActivity() {
             val nome = binding.nomeInputRegistrazione.text.toString()
             val cognome = binding.cognomeInputRegistrazione.text.toString()
 
-            when (val result = userRepository.setUser(mail, password, nome, cognome)) {
+            when (val result = UserRepository.setUser(mail, password, nome, cognome)) {
                 is ApiRegistrationResult.Success -> {
                     // navigate to next screen with data
                     val intent = Intent(this@RegistrationActivity, RegistrationSuccessActivity::class.java)

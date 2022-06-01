@@ -11,7 +11,7 @@
     <string name="login">Login</string>
     <string name="no_account_register">Non hai un account? Registrati</string>
     <string name="registrazione">Registrazione</string>
-    <string name="terminiecondizioni">Confermo di aver letto il regolamento e accetto i %2$s</string>
+    <string name="terminiecondizioni">Confermo di aver letto il regolamento e accetto i %1$s</string>
     <string name="gotohomepage">Vai alla homepage</string>
     <string name="attenzione">Attenzione!</string>
     <string name="problema_riprovare">C\'è stato un problema durante la registrazione. \n Si prega di riprovare.</string>
@@ -20,4 +20,8 @@
     <string name="piu">+</string>
     <string name="meno">-</string>
     <string name="cercavoli">Cerca Voli</string>
+    <string name="selezionavolo">Seleziona il volo</string>
+    <string name="cagliariExampleText">Cagliari, CAG</string>
+    <string name="booking_details_flight">%1$s\n%2$s</string>
+    <string name="airport_description">%1$s, %2$s</string>
 </resources>

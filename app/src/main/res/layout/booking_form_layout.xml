@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-   <!-- <include layout = "@layout/activity_registration_success"/> -->
+    <!-- <include layout = "@layout/activity_registration_success"/> -->
 
     <EditText
         android:id="@+id/edittextorigine"
@@ -14,6 +14,10 @@
         android:layout_marginTop="@dimen/padding30"
         android:layout_marginEnd="@dimen/padding20"
         android:background="@drawable/textinputborder"
+        android:clickable="false"
+        android:cursorVisible="false"
+        android:focusable="false"
+        android:focusableInTouchMode="false"
         android:hint="@string/hint_origine"
         android:inputType="text"
         android:paddingStart="@dimen/padding20"
@@ -33,6 +37,10 @@
         android:layout_marginTop="20dp"
         android:layout_marginEnd="@dimen/padding20"
         android:background="@drawable/textinputborder"
+        android:clickable="false"
+        android:cursorVisible="false"
+        android:focusable="false"
+        android:focusableInTouchMode="false"
         android:hint="@string/hint_destinazione"
         android:inputType="text"
         android:paddingStart="@dimen/padding20"
@@ -52,6 +60,10 @@
         android:layout_marginTop="@dimen/padding20"
         android:layout_marginEnd="@dimen/padding5"
         android:background="@drawable/textinputborder"
+        android:clickable="false"
+        android:cursorVisible="false"
+        android:focusable="false"
+        android:focusableInTouchMode="false"
         android:hint="@string/hint_andata"
         android:paddingStart="@dimen/padding10"
         android:paddingTop="@dimen/padding10"
@@ -71,6 +83,10 @@
         android:layout_marginTop="@dimen/padding20"
         android:layout_marginEnd="@dimen/padding20"
         android:background="@drawable/textinputborder"
+        android:clickable="false"
+        android:cursorVisible="false"
+        android:focusable="false"
+        android:focusableInTouchMode="false"
         android:hint="@string/hint_ritorno"
         android:paddingStart="@dimen/padding10"
         android:paddingTop="@dimen/padding10"
@@ -87,9 +103,10 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="28dp"
         android:background="@drawable/textinputborder"
+        android:gravity="center_horizontal"
         android:hint="@string/npasseggeri"
-        android:paddingStart="@dimen/padding10"
         android:inputType="number"
+        android:paddingStart="@dimen/padding10"
         android:paddingTop="@dimen/padding10"
         android:paddingEnd="@dimen/padding10"
         android:paddingBottom="@dimen/padding10"
@@ -108,38 +125,34 @@
         android:backgroundTint="@color/grey_app"
         android:text="@string/piu"
         app:layout_constraintStart_toEndOf="@id/npasseggeriedittext"
-        app:layout_constraintTop_toBottomOf="@id/edittextritorno"
-        />
+        app:layout_constraintTop_toBottomOf="@id/edittextritorno" />
 
     <Button
         android:id="@+id/minusbutton"
         android:layout_width="50dp"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="@dimen/padding20"
         android:layout_marginTop="@dimen/padding30"
+        android:layout_marginEnd="@dimen/padding20"
         android:background="@drawable/round_button"
         android:text="@string/meno"
         app:layout_constraintEnd_toStartOf="@id/npasseggeriedittext"
-        app:layout_constraintTop_toBottomOf="@id/edittextritorno"
-        />
+        app:layout_constraintTop_toBottomOf="@id/edittextritorno" />
 
     <Button
         android:id="@+id/cercavolibutton"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
-        android:layout_marginBottom="@dimen/padding20"
-        android:text="@string/cercavoli"
-        android:textSize="@dimen/size20text"
         android:layout_marginStart="@dimen/padding50"
         android:layout_marginEnd="@dimen/padding50"
+        android:layout_marginBottom="@dimen/padding20"
+        android:background="@drawable/roundedbutton"
         android:paddingTop="@dimen/padding15"
         android:paddingBottom="@dimen/padding15"
-        android:background="@drawable/roundedbutton"/>
-
-
+        android:text="@string/cercavoli"
+        android:textSize="@dimen/size20text"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
