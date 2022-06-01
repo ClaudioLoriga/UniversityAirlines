@@ -76,6 +76,4 @@ interface SetUserService {
         @Query("mail") mail: String, @Query("password") password: String,
         @Query("first_name") first_name: String, @Query("last_name") last_name: String
     ): Call<RegistrationResponse>
-
-
 }

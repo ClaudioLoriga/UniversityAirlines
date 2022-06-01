@@ -8,10 +8,12 @@ import android.os.Looper
 import com.example.universityairlines.login.LoginActivity
 
 class SplashActivity : AppCompatActivity() {
-    @Override
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.splash_layout)
+
+        // Activity deve essere full screen
 
         Handler(Looper.getMainLooper()).postDelayed({
             val intent = Intent(this, LoginActivity::class.java)

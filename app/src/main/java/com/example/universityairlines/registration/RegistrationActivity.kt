@@ -5,6 +5,8 @@ import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.lifecycleScope
+import com.example.universityairlines.HomepageActivity
+import com.example.universityairlines.R
 import com.example.universityairlines.UserRepository
 import com.example.universityairlines.databinding.ActivityRegistrationBinding
 import com.example.universityairlines.model.ApiRegistrationResult
@@ -15,7 +17,6 @@ import retrofit2.converter.jackson.JacksonConverterFactory
 
 class RegistrationActivity : AppCompatActivity() {
     private lateinit var binding: ActivityRegistrationBinding
-
     private var retrofit: Retrofit =
         Retrofit.Builder()
             .baseUrl("https://universityairlines.altervista.org")
@@ -24,7 +25,6 @@ class RegistrationActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
         binding = ActivityRegistrationBinding.inflate(layoutInflater)
         val view = binding.root
 
@@ -50,16 +50,16 @@ class RegistrationActivity : AppCompatActivity() {
             when (val result = userRepository.setUser(mail, password, nome, cognome)) {
                 is ApiRegistrationResult.Success -> {
                     // navigate to next screen with data
-                    val intent = Intent(this@RegistrationActivity, RegistrationSuccess::class.java)
-                    //intent.putExtra(HomepageActivity.EXTRAKEY, result.value.firstName)
+                    val intent = Intent(this@RegistrationActivity, RegistrationSuccessActivity::class.java)
+                    intent.putExtra(RegistrationSuccessActivity.EXTRAKEY, nome)
                     startActivity(intent)
                 }
                 is ApiRegistrationResult.Failure<*> -> {
                     // show error
                     MaterialAlertDialogBuilder(this@RegistrationActivity)
-                        .setTitle("Attenzione")
+                        .setTitle(resources.getString(R.string.attenzione))
                         .setMessage(
-                            "C'è stato un problema durante la registrazione.\nSi prega di riprovare."
+                            resources.getString(R.string.problema_riprovare)
                         ).show()
                 }
             }

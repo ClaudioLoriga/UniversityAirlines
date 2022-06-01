@@ -12,7 +12,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.UniversityAirlines">
         <activity
-            android:name=".registration.RegistrationSuccess"
+            android:name=".registration.RegistrationSuccessActivity"
             android:exported="false" />
         <activity
             android:name=".registration.RegistrationActivity"
@@ -21,9 +21,6 @@
             android:name=".login.LoginActivity"
             android:exported="false" />
         <activity android:name=".booking.BookingActivity" />
-        <activity
-            android:name=".MainActivity"
-            android:exported="false" />
         <activity android:name=".HomepageActivity" />
         <activity
             android:name=".SplashActivity"
