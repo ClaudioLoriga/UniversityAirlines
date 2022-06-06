@@ -88,52 +88,66 @@
         android:id="@+id/immagine1"
         android:layout_width="125dp"
         android:layout_height="102dp"
-        android:layout_marginStart="20dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.055"
-        app:layout_constraintStart_toStartOf="parent"
+
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.19999999"
+        android:layout_marginTop="@dimen/padding140"
+
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginStart="@dimen/padding35"
+
+
         app:srcCompat="@drawable/roma" />
 
     <ImageView
         android:id="@+id/immagine2"
         android:layout_width="125dp"
         android:layout_height="102dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.163"
-        app:layout_constraintStart_toEndOf="@+id/immagine1"
+
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.199"
+        android:layout_marginTop="@dimen/padding140"
+
+        app:layout_constraintStart_toEndOf="@id/immagine1"
+        android:layout_marginStart="@dimen/padding20"
+
+
+
+
         app:srcCompat="@drawable/usa" />
 
     <ImageView
         android:id="@+id/immagine3"
         android:layout_width="125dp"
         android:layout_height="102dp"
-        android:layout_marginStart="20dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/immagine4"
-        app:layout_constraintHorizontal_bias="0.419"
+
+        app:layout_constraintTop_toBottomOf="@id/immagine1"
+        android:layout_marginTop="@dimen/padding10"
+
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.392"
+        android:layout_marginStart="@dimen/padding35"
+
+        app:layout_constraintBottom_toTopOf="@id/textView2"
+        android:layout_marginBottom="@dimen/padding10"
+
+
+
+
         app:srcCompat="@drawable/londra" />
 
     <ImageView
         android:id="@+id/immagine4"
         android:layout_width="125dp"
         android:layout_height="102dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.656"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.392"
-        app:srcCompat="@drawable/parigi" />
 
+        app:layout_constraintTop_toBottomOf="@id/immagine2"
+        android:layout_marginTop="@dimen/padding20"
+
+        app:layout_constraintStart_toEndOf="@id/immagine3"
+        android:layout_marginStart="@dimen/padding20"
+
+        app:layout_constraintBottom_toTopOf="@id/buttonCerca"
+        android:layout_marginBottom="@dimen/padding50"
+
+        app:srcCompat="@drawable/parigi" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
