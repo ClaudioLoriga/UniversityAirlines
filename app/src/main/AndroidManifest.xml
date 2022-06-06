@@ -12,10 +12,17 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.UniversityAirlines">
         <activity
+
             android:name=".AirportList"
             android:exported="false" />
         <activity
             android:name=".registration.RegistrationSuccess"
+
+            android:name=".BookingFlightsListActivity"
+            android:exported="false" />
+        <activity
+            android:name=".registration.RegistrationSuccessActivity"
+
             android:exported="false" />
         <activity
             android:name=".registration.RegistrationActivity"
@@ -24,13 +31,11 @@
             android:name=".login.LoginActivity"
             android:exported="false" />
         <activity android:name=".booking.BookingActivity" />
-        <activity
-            android:name=".MainActivity"
-            android:exported="false" />
         <activity android:name=".HomepageActivity" />
         <activity
             android:name=".SplashActivity"
-            android:exported="true">
+            android:exported="true"
+            android:theme="@style/Theme.UniversityAirlines.NoActionBar.Fullscreen">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

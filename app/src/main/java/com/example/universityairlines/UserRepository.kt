@@ -8,21 +8,28 @@ import retrofit2.Call
 import retrofit2.Response
 import retrofit2.Retrofit
 import retrofit2.awaitResponse
+import retrofit2.converter.jackson.JacksonConverterFactory
 import retrofit2.http.GET
 import retrofit2.http.Query
 
-class UserRepository(retrofit: Retrofit) {
+object UserRepository {
+
+    private var retrofit: Retrofit =
+        Retrofit.Builder()
+            .baseUrl("https://universityairlines.altervista.org")
+            .addConverterFactory(JacksonConverterFactory.create()).build()
 
     private val retrofitServiceLogin = retrofit.create(GetUserService::class.java)
     private val retrofitServiceRegistration = retrofit.create(SetUserService::class.java)
+    private val retrofitServiceGetFlights = retrofit.create(GetFlightService::class.java)
     private val mapper = jacksonObjectMapper()
 
     suspend fun getUser(
         mail: String,
         password: String,
-    ): ApiLoginResult<LoginResponse> {
+    ): ApiResult<LoginResponse> {
         val service: Call<LoginResponse> = retrofitServiceLogin.getUser(mail, password)
-        return callLogin(service)
+        return safeCall(service)
     }
 
     suspend fun setUser(
@@ -33,19 +40,37 @@ class UserRepository(retrofit: Retrofit) {
         return callRegistration(service)
     }
 
-    private suspend fun <R : Any, T : Call<R>> callLogin(service: T): ApiLoginResult<R> =
+    suspend fun getFlights(
+        origine: String,
+        destinazione: String,
+        dataDiPartenza: String,
+        dataDiRitorno: String,
+        numPasseggeri: String
+    ): ApiResult<GetFlightsResponse> {
+        val service: Call<GetFlightsResponse> =
+            retrofitServiceGetFlights.getFlights(
+                origine,
+                destinazione,
+                dataDiPartenza,
+                dataDiRitorno,
+                numPasseggeri
+            )
+        return safeCall(service)
+    }
+
+    private suspend fun <R : Any, T : Call<R>> safeCall(service: T): ApiResult<R> =
         withContext(Dispatchers.IO) {
             val response: Response<R> = service.awaitResponse()
 
             if (response.isSuccessful) {
-                ApiLoginResult.Success(response.body()!!)
+                ApiResult.Success(response.body()!!)
             } else {
                 val error = try {
                     mapper.readValue(response.errorBody()!!.string(), ErrorResponse::class.java)
                 } catch (e: Exception) {
                     null
                 }
-                ApiLoginResult.Failure(error)
+                ApiResult.Failure(error)
             }
         }
 
@@ -76,6 +101,15 @@ interface SetUserService {
         @Query("mail") mail: String, @Query("password") password: String,
         @Query("first_name") first_name: String, @Query("last_name") last_name: String
     ): Call<RegistrationResponse>
+}
 
-
+interface GetFlightService {
+    @GET("/get_flights.php")
+    fun getFlights(
+        @Query("origin") origine: String,
+        @Query("destination") destinazione: String,
+        @Query("departure_date") dataDiPartenza: String,
+        @Query("return_date") dataDiRitorno: String,
+        @Query("passenger_number") numPasseggeri: String
+    ): Call<GetFlightsResponse>
 }
