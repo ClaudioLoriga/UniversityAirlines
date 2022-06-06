@@ -26,8 +26,10 @@ class BookingFlightsListActivity : AppCompatActivity() {
         binding = BookingFlightsListBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        val stringOrigine = intent.getStringExtra(EXTRAKEY_ORIGINE).orEmpty()
-        val stringDestinazione = intent.getStringExtra(EXTRAKEY_DESTINAZIONE).orEmpty()
+        //val stringOrigine = intent.getStringExtra(EXTRAKEY_ORIGINE).orEmpty()
+        //val stringDestinazione = intent.getStringExtra(EXTRAKEY_DESTINAZIONE).orEmpty()
+        val stringOrigine = "Cagliari"
+        val stringDestinazione = "Bogota"
         val stringAndata = intent.getStringExtra(EXTRAKEY_ANDATA).orEmpty()
         val stringRitorno = intent.getStringExtra(EXTRAKEY_RITORNO).orEmpty()
         val stringPasseggeri = intent.getStringExtra(EXTRAKEY_PASSEGGERI).orEmpty()

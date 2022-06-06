@@ -110,6 +110,6 @@ interface GetFlightService {
         @Query("destination") destinazione: String,
         @Query("departure_date") dataDiPartenza: String,
         @Query("return_date") dataDiRitorno: String,
-        @Query("passenger_number") numPasseggeri: String
+        @Query("passengers_number") numPasseggeri: String
     ): Call<GetFlightsResponse>
 }

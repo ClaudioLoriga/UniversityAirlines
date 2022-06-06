@@ -55,7 +55,7 @@ class BookingFlightListAdapter : ListAdapter<Airport, BookingFlightListAdapter.V
     }
 
     private fun BookingSimpleFlightViewBinding.getString(@StringRes id: Int, vararg params: String) =
-        root.context.resources.getString(id, params)
+        root.context.resources.getString(id, *params)
 
     class DiffUtil : BaseDiffUtil.ItemCallback<Airport>() {
         override fun areItemsTheSame(oldItem: Airport, newItem: Airport): Boolean {

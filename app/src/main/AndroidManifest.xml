@@ -12,7 +12,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.UniversityAirlines">
         <activity
-            android:name=".BookingFlightsListActivity"
+            android:name=".booking.BookingFlightsListActivity"
             android:exported="false" />
         <activity
             android:name=".registration.RegistrationSuccessActivity"

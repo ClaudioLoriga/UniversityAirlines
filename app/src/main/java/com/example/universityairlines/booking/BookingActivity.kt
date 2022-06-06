@@ -27,7 +27,7 @@ class BookingActivity : AppCompatActivity() {
         binding = BookingFormLayoutBinding.inflate(layoutInflater)
         val view = binding.root
         setContentView(view)
-        var number = 0
+        var number = 1
 
         binding.edittextorigine.setOnClickListener {
             // fai cose ....
@@ -54,7 +54,9 @@ class BookingActivity : AppCompatActivity() {
         }
 
         binding.minusbutton.setOnClickListener {
-            number = number.dec()
+            if (number > 1) {
+                number = number.dec()
+            }
             binding.npasseggeriedittext.setText(number.toString())
         }
         binding.plusbutton.setOnClickListener {
