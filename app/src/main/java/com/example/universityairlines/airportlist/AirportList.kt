@@ -1,5 +1,5 @@
 /*package com.example.universityairlines.airportlist
-
+/*
 import android.app.ProgressDialog
 import android.content.Intent
 import android.os.Bundle
@@ -77,7 +77,7 @@ class AirportList : AppCompatActivity() {
                         //       progress.hide()
                         //val animali = arrayOf("giraffa", "leone", "gatto", "tigre", "cane", "pecora", "pesce")
 
-/*
+
                         val lista = arrayListOf<String>()
                         aeroporto.airports?.forEach { airport ->
                           if (airport.name != null){
@@ -90,7 +90,7 @@ class AirportList : AppCompatActivity() {
 
                         //listViewDemo.adapter = adapt
                         textView.text = aeroporto.toString()
-*/
+
                     }
                 }
 
@@ -105,13 +105,5 @@ class AirportList : AppCompatActivity() {
         }
 
     }
-
-
-
-
-
-
 }
-
-
-
+*/

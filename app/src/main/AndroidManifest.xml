@@ -12,6 +12,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.UniversityAirlines">
         <activity
+            android:name=".booking.BookingPaymentActivity"
+            android:exported="false" />
+        <activity
+            android:name=".booking.BookingPassengersDetails"
+            android:exported="false" />
+        <activity
             android:name=".booking.BookingFlightsListActivity"
             android:exported="false" />
         <activity
@@ -24,7 +30,7 @@
             android:name=".login.LoginActivity"
             android:exported="false" />
         <activity android:name=".booking.BookingActivity" />
-        <activity android:name=".HomepageActivity" />
+        <activity android:name=".homepage.HomepageActivity" />
         <activity
             android:name=".SplashActivity"
             android:exported="true"

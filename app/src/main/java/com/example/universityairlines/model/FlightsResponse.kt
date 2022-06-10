@@ -1,11 +1,13 @@
 package com.example.universityairlines.model
 
-
+import android.os.Parcelable
 import com.fasterxml.jackson.annotation.JsonProperty
+import kotlinx.parcelize.Parcelize
 
-data class GetFlightsResponse(
+@Parcelize
+data class FlightsResponse(
     @JsonProperty("airports")
-    val airports: List<Airport>,
+    val flights: List<Flight>,
     @JsonProperty("passengers_number")
     val passengersNumber: String
-)
+) : Parcelable

@@ -3,10 +3,7 @@ package com.example.universityairlines.registration
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.Button
-import com.example.universityairlines.HomepageActivity
-import com.example.universityairlines.R
-import com.example.universityairlines.databinding.ActivityRegistrationBinding
+import com.example.universityairlines.homepage.HomepageActivity
 import com.example.universityairlines.databinding.ActivityRegistrationSuccessBinding
 
 class RegistrationSuccessActivity : AppCompatActivity() {

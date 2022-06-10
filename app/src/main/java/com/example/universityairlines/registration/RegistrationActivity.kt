@@ -5,15 +5,12 @@ import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.lifecycleScope
-import com.example.universityairlines.HomepageActivity
 import com.example.universityairlines.R
 import com.example.universityairlines.UserRepository
 import com.example.universityairlines.databinding.ActivityRegistrationBinding
 import com.example.universityairlines.model.ApiRegistrationResult
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import kotlinx.coroutines.launch
-import retrofit2.Retrofit
-import retrofit2.converter.jackson.JacksonConverterFactory
 
 class RegistrationActivity : AppCompatActivity() {
     private lateinit var binding: ActivityRegistrationBinding

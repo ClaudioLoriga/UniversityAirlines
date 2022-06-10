@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".booking.BookingPaymentActivity">
+
+
+    <TextView
+        android:id="@+id/voloSelezionatoTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/padding20"
+        android:text="@string/volo_selezionato"
+        android:textAppearance="@style/TextAppearance.MaterialComponents.Headline5"
+        android:textSize="@dimen/size28text"
+        app:layout_constraintBottom_toTopOf="@id/choosenFlight"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <include
+        android:id="@+id/choosenFlight"
+        layout="@layout/booking_simple_flight_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/voloSelezionatoTextView" />
+
+    <TextView
+        android:id="@+id/passengerNumberTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/padding20"
+        android:text="@string/numero_passeggeri"
+        android:textAppearance="@style/TextAppearance.MaterialComponents.Headline5"
+        android:textSize="@dimen/size20text"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/choosenFlight" />
+
+    <TextView
+        android:id="@+id/totalToPayTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/padding20"
+        android:text="@string/totale_da_pagare"
+        android:textAppearance="@style/TextAppearance.MaterialComponents.Headline5"
+        android:textSize="@dimen/size20text"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/passengerNumberTextView" />
+
+    <TextView
+        android:id="@+id/paySumTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/size24text"
+        android:text="@string/placeholder_price"
+        android:textAppearance="@style/TextAppearance.MaterialComponents.Headline5"
+        android:textSize="@dimen/size20text"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/passengerNumberTextView" />
+
+    <EditText
+        android:id="@+id/cardNumberEditText"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/padding20"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="@dimen/padding20"
+        android:background="@drawable/textinputborder"
+        android:hint="@string/numero_carta"
+        android:inputType="numberSigned"
+        android:paddingStart="@dimen/padding20"
+        android:paddingTop="@dimen/padding10"
+        android:paddingEnd="@dimen/padding20"
+        android:paddingBottom="@dimen/padding10"
+        android:textSize="@dimen/size20text"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/totalToPayTextView" />
+
+    <EditText
+        android:id="@+id/expireEditText"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/padding20"
+        android:layout_marginTop="@dimen/padding20"
+        android:layout_marginEnd="@dimen/padding5"
+        android:background="@drawable/textinputborder"
+        android:hint="@string/scadenza"
+        android:inputType="numberSigned"
+        android:paddingStart="@dimen/padding10"
+        android:paddingTop="@dimen/padding10"
+        android:paddingEnd="@dimen/padding5"
+        android:paddingBottom="@dimen/padding10"
+        android:textSize="@dimen/size20text"
+        app:layout_constraintEnd_toStartOf="@id/cvvEditText"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/cardNumberEditText" />
+
+    <EditText
+        android:id="@+id/cvvEditText"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/padding5"
+        android:layout_marginTop="@dimen/padding20"
+        android:layout_marginEnd="@dimen/padding20"
+        android:background="@drawable/textinputborder"
+        android:hint="@string/cvv"
+        android:inputType="numberSigned"
+        android:paddingStart="@dimen/padding10"
+        android:paddingTop="@dimen/padding10"
+        android:paddingEnd="@dimen/padding5"
+        android:paddingBottom="@dimen/padding10"
+        android:textSize="@dimen/size20text"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/expireEditText"
+        app:layout_constraintTop_toBottomOf="@id/cardNumberEditText" />
+
+    <Button
+        android:id="@+id/buttonPay"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/padding40"
+        android:padding="@dimen/padding15"
+        android:text="@string/paga_ora"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

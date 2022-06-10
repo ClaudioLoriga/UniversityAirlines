@@ -24,4 +24,16 @@
     <string name="cagliariExampleText">Cagliari, CAG</string>
     <string name="booking_details_flight">%1$s\n%2$s</string>
     <string name="airport_description">%1$s, %2$s</string>
+    <string name="conferma">Conferma</string>
+    <string name="nome">Nome</string>
+    <string name="cognome">Cognome</string>
+    <string name="passeggero">Passeggero %1$s</string>
+    <string name="volo_selezionato">Volo selezionato</string>
+    <string name="numero_passeggeri">Numero passeggeri : %1$s</string>
+    <string name="numero_carta">Numero carta</string>
+    <string name="totale_da_pagare">Totale da pagare:</string>
+    <string name="scadenza">Scadenza</string>
+    <string name="cvv">CVV</string>
+    <string name="placeholder_price">%1$s €</string>
+    <string name="paga_ora">PAGA ORA</string>
 </resources>

@@ -8,11 +8,15 @@
     <com.google.android.material.card.MaterialCardView
         android:id="@+id/card"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_margin="@dimen/padding20"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/padding20"
+        android:layout_marginVertical="@dimen/padding10"
         app:cardCornerRadius="@dimen/cornerRadius"
         app:cardElevation="@dimen/elevation"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"

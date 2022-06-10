@@ -5,8 +5,8 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
 import androidx.lifecycle.lifecycleScope
-import com.example.universityairlines.HomepageActivity
-import com.example.universityairlines.HomepageActivity.Companion.EXTRAKEY
+import com.example.universityairlines.homepage.HomepageActivity
+import com.example.universityairlines.homepage.HomepageActivity.Companion.EXTRAKEY
 import com.example.universityairlines.registration.RegistrationActivity
 import com.example.universityairlines.UserRepository
 import com.example.universityairlines.databinding.LoginLayoutBinding

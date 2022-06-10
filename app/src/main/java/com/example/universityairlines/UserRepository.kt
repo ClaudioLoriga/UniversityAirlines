@@ -46,8 +46,8 @@ object UserRepository {
         dataDiPartenza: String,
         dataDiRitorno: String,
         numPasseggeri: String
-    ): ApiResult<GetFlightsResponse> {
-        val service: Call<GetFlightsResponse> =
+    ): ApiResult<FlightsResponse> {
+        val service: Call<FlightsResponse> =
             retrofitServiceGetFlights.getFlights(
                 origine,
                 destinazione,
@@ -111,5 +111,5 @@ interface GetFlightService {
         @Query("departure_date") dataDiPartenza: String,
         @Query("return_date") dataDiRitorno: String,
         @Query("passengers_number") numPasseggeri: String
-    ): Call<GetFlightsResponse>
+    ): Call<FlightsResponse>
 }
