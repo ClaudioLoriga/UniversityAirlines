@@ -58,13 +58,14 @@
         android:id="@+id/textView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="15dp"
         android:text="@string/check_in"
         android:textColor="@color/blue_app"
         android:textSize="@dimen/size24text"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/immagine3"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:layout_marginHorizontal="@dimen/padding15"
+        android:layout_marginVertical="@dimen/padding25"
+ />
 
     <EditText
         android:id="@+id/editTextTextMultiLine"
