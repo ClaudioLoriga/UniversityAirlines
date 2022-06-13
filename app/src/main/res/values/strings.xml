@@ -42,4 +42,8 @@
     <string name="volo_acquistato">Volo acquistato</string>
     <string name="torna_alla_home">Torna alla Home</string>
     <string name="totale_pagato">Totale pagato:</string>
+    <string name="numero_prenotazione">Numero prenotazione</string>
+    <string name="check_in">Check-in</string>
+    <string name="cerca">cerca</string>
+    <string name="prenota_volo">prenota volo</string>
 </resources>
