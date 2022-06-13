@@ -11,6 +11,7 @@ import com.example.universityairlines.R
 import com.example.universityairlines.databinding.BookingSimpleFlightViewBinding
 import com.example.universityairlines.model.Flight
 import com.example.universityairlines.model.FlightsResponse
+import com.example.universityairlines.ui.getString
 import kotlinx.coroutines.flow.callbackFlow
 
 
@@ -66,11 +67,11 @@ class BookingFlightListAdapter(private val callBack: (FlightsResponse, Flight) -
         }
     }
 
-    private fun BookingSimpleFlightViewBinding.getString(
-        @StringRes id: Int,
-        vararg params: String
-    ) =
-        root.context.resources.getString(id, *params)
+//    private fun BookingSimpleFlightViewBinding.getString(
+//        @StringRes id: Int,
+  //      vararg params: String
+  //  ) =
+   //     root.context.resources.getString(id, *params)
 
     class DiffUtil : BaseDiffUtil.ItemCallback<Flight>() {
         override fun areItemsTheSame(oldItem: Flight, newItem: Flight): Boolean {

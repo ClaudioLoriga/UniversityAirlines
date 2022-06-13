@@ -36,13 +36,6 @@ android {
     }
 }
 
-/*allprojects {
-    repositories {
-        google()
-        mavenCentral()
-    }
-}*/
-
 dependencies {
 
     implementation 'androidx.core:core-ktx:1.8.0'

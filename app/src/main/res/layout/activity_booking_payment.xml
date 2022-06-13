@@ -52,7 +52,7 @@
         android:id="@+id/paySumTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_margin="@dimen/size24text"
+        android:layout_margin="@dimen/size20text"
         android:text="@string/placeholder_price"
         android:textAppearance="@style/TextAppearance.MaterialComponents.Headline5"
         android:textSize="@dimen/size20text"

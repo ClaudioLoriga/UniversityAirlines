@@ -15,11 +15,10 @@ import com.example.universityairlines.model.Flight
 import com.example.universityairlines.model.FlightsResponse
 import com.example.universityairlines.model.Passenger
 
-class BookingPassengersDetails : AppCompatActivity() {
+class BookingPassengersDetailsActivity : AppCompatActivity() {
 
     private lateinit var binding: PassengersDetailsListBinding
-
-    private val passengersDetails = mutableListOf<Passenger>()
+    private val passengersDetails = ArrayList<Passenger>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -32,7 +31,7 @@ class BookingPassengersDetails : AppCompatActivity() {
             setupUi(flightList)
             binding.buttonConferma.setOnClickListener {
                 val intent = Intent(this, BookingPaymentActivity::class.java)
-                //intent.putExtra("passengers", passengersDetails)
+                intent.putExtra("passengers", passengersDetails)
                 intent.putExtra("flightInfo", flight)
                 startActivity(intent)
             }

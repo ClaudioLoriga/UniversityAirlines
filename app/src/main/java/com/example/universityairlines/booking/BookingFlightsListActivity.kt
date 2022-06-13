@@ -49,7 +49,7 @@ class BookingFlightsListActivity : AppCompatActivity() {
                 is ApiResult.Success -> {
                     adapter = BookingFlightListAdapter(
                         callBack = ::navigateNextActivityWithFlight,
-                        response.value
+                        response.value,
                     )
                     binding.recyclerView.adapter = adapter
                     creaListaAeroporti(response.value)
@@ -74,7 +74,7 @@ class BookingFlightsListActivity : AppCompatActivity() {
     }
 
     fun navigateNextActivityWithFlight(flightList: FlightsResponse, flight: Flight) {
-        val intent = Intent(this, BookingPassengersDetails::class.java)
+        val intent = Intent(this, BookingPassengersDetailsActivity::class.java)
         intent.putExtra("flightList", flightList)
         intent.putExtra("flight", flight)
         startActivity(intent)

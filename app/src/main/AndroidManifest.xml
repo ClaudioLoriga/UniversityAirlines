@@ -15,7 +15,7 @@
             android:name=".booking.BookingPaymentActivity"
             android:exported="false" />
         <activity
-            android:name=".booking.BookingPassengersDetails"
+            android:name=".booking.BookingPassengersDetailsActivity"
             android:exported="false" />
         <activity
             android:name=".booking.BookingFlightsListActivity"

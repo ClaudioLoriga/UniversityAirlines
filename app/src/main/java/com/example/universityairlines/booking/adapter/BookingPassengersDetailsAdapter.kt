@@ -14,7 +14,7 @@ import com.example.universityairlines.databinding.PassengerDetailItemBinding
 import com.example.universityairlines.model.Passenger
 
 
-class BookingPassengersDetailsAdapter :
+/*class BookingPassengersDetailsAdapter :
     ListAdapter<Passenger, BookingPassengersDetailsAdapter.ViewHolder>(DiffUtil()) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -90,4 +90,4 @@ class BookingPassengersDetailsAdapter :
             return oldItem == newItem
         }
     }
-}
+}*/

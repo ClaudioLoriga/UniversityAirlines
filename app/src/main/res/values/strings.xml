@@ -34,6 +34,6 @@
     <string name="totale_da_pagare">Totale da pagare:</string>
     <string name="scadenza">Scadenza</string>
     <string name="cvv">CVV</string>
-    <string name="placeholder_price">%1$s €</string>
+    <string name="placeholder_price">%1$s %2$s</string>
     <string name="paga_ora">PAGA ORA</string>
 </resources>

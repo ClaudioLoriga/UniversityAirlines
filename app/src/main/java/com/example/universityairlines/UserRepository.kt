@@ -22,6 +22,8 @@ object UserRepository {
     private val retrofitServiceLogin = retrofit.create(GetUserService::class.java)
     private val retrofitServiceRegistration = retrofit.create(SetUserService::class.java)
     private val retrofitServiceGetFlights = retrofit.create(GetFlightService::class.java)
+    private val retrofitServiceGetPaymentInit =
+        retrofit.create(GetPaymentInitialization::class.java)
     private val mapper = jacksonObjectMapper()
 
     suspend fun getUser(
@@ -54,6 +56,26 @@ object UserRepository {
                 dataDiPartenza,
                 dataDiRitorno,
                 numPasseggeri
+            )
+        return safeCall(service)
+    }
+
+    suspend fun getPaymentInit(
+        origine: String,
+        destinazione: String,
+        data_partenza: String,
+        data_ritorno: String,
+        num_passeggeri: String,
+        prezzo_volo: String
+    ): ApiResult<PaymentInitResponse> {
+        val service: Call<PaymentInitResponse> =
+            retrofitServiceGetPaymentInit.getPaymentInit(
+                origine,
+                destinazione,
+                data_partenza,
+                data_ritorno,
+                num_passeggeri,
+                prezzo_volo
             )
         return safeCall(service)
     }
@@ -112,4 +134,16 @@ interface GetFlightService {
         @Query("return_date") dataDiRitorno: String,
         @Query("passengers_number") numPasseggeri: String
     ): Call<FlightsResponse>
+}
+
+interface GetPaymentInitialization {
+    @GET("/payment_init.php")
+    fun getPaymentInit(
+        @Query("origin") origine: String,
+        @Query("destination") destinazione: String,
+        @Query("departure_date") data_partenza: String,
+        @Query("return_date") data_ritorno: String,
+        @Query("passengers_number") num_passeggeri: String,
+        @Query("flight_price") prezzo_volo: String
+    ): Call<PaymentInitResponse>
 }
