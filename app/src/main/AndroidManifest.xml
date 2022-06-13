@@ -12,6 +12,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.UniversityAirlines">
         <activity
+            android:name=".booking.BookingPaymentConfirmationActivity"
+            android:exported="false" />
+        <activity
             android:name=".booking.BookingPaymentActivity"
             android:exported="false" />
         <activity

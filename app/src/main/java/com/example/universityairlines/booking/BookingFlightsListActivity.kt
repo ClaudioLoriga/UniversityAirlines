@@ -28,8 +28,8 @@ class BookingFlightsListActivity : AppCompatActivity() {
 
         //val stringOrigine = intent.getStringExtra(EXTRAKEY_ORIGINE).orEmpty()
         //val stringDestinazione = intent.getStringExtra(EXTRAKEY_DESTINAZIONE).orEmpty()
-        val stringOrigine = "Cagliari"
-        val stringDestinazione = "Bogota"
+        val stringOrigine = "Cagliari" //STRINGA PROVVISORIA
+        val stringDestinazione = "Bogota" // STRINGA PROVVISORIA
         val stringAndata = intent.getStringExtra(EXTRAKEY_ANDATA).orEmpty()
         val stringRitorno = intent.getStringExtra(EXTRAKEY_RITORNO).orEmpty()
         val stringPasseggeri = intent.getStringExtra(EXTRAKEY_PASSEGGERI).orEmpty()

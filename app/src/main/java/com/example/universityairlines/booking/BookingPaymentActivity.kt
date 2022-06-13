@@ -1,15 +1,14 @@
 package com.example.universityairlines.booking
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.lifecycle.lifecycleScope
 import com.example.universityairlines.R
 import com.example.universityairlines.UserRepository
-import com.example.universityairlines.booking.adapter.BookingFlightListAdapter
 import com.example.universityairlines.databinding.ActivityBookingPaymentBinding
 import com.example.universityairlines.model.ApiResult
 import com.example.universityairlines.model.Flight
-import com.example.universityairlines.model.FlightsResponse
 import com.example.universityairlines.model.Passenger
 import com.example.universityairlines.ui.getString
 import kotlinx.coroutines.launch
@@ -72,6 +71,16 @@ class BookingPaymentActivity : AppCompatActivity() {
                         is ApiResult.Failure -> Unit// Mappare errore
                     }
                 }
+
+                binding.buttonPay.setOnClickListener {
+                    val intent = Intent(this, BookingPaymentConfirmationActivity::class.java)
+                    intent.putExtra("flight", flight)
+                    intent.putExtra(BookingPaymentConfirmationActivity.EXTRAKEY_TTP, binding.paySumTextView.text)
+                    intent.putExtra(BookingPaymentConfirmationActivity.EXTRAKEY_CARD_NUMBER, binding.cardNumberEditText.text)
+                    intent.putExtra(BookingPaymentConfirmationActivity.EXTRAKEY_CARD_EXPIRATION, binding.expireEditText.text)
+                    intent.putExtra(BookingPaymentConfirmationActivity.EXTRAKEY_CVV, binding.cvvEditText.text)
+                    startActivity(intent)
+                }
             }
 
             binding.paySumTextView.text = binding.getString(
@@ -81,7 +90,7 @@ class BookingPaymentActivity : AppCompatActivity() {
             )
         }
 
-        binding.buttonPay.setOnClickListener { }
+
     }
 }
 

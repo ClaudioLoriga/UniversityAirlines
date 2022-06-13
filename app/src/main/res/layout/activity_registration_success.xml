@@ -5,19 +5,17 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/blue_app"
-    tools:context=".registration.RegistrationSuccessActivity"
-
-    >
+    tools:context=".registration.RegistrationSuccessActivity">
 
     <TextView
         android:id="@+id/presentationTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="50dp"
+        android:layout_margin="@dimen/padding20"
+        android:padding="@dimen/padding15"
         android:text="@string/registration_text"
         android:textColor="@color/white"
-        android:textSize="@dimen/size28text"
-        android:padding="@dimen/padding15"
+        android:textSize="@dimen/size24text"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -26,12 +24,10 @@
         android:id="@+id/subPresentationTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_margin="@dimen/padding15"
+        android:padding="@dimen/padding10"
         android:text="@string/subRegistration_text"
         android:textColor="@color/white"
-        android:layout_marginTop="@dimen/padding30"
-        android:layout_marginStart="@dimen/padding20"
-        android:layout_marginEnd="@dimen/padding20"
-        android:padding="@dimen/padding15"
         android:textSize="@dimen/size20text"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -42,7 +38,6 @@
         android:layout_width="150dp"
         android:layout_height="150dp"
         android:src="@drawable/free_airplane_jet_icon_1764_thumb"
-        android:layout_marginTop="@dimen/padding20"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/subPresentationTextView" />
@@ -50,21 +45,21 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
+        android:background="@color/white"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/airplaneImage"
-        android:background="@color/white"/>
+        app:layout_constraintTop_toBottomOf="@+id/airplaneImage" />
 
     <Button
         android:id="@+id/bottoneHome"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="@dimen/padding20"
-        android:paddingBottom="@dimen/padding20"
-        android:paddingTop="@dimen/padding20"
         android:paddingStart="@dimen/padding40"
+        android:paddingTop="@dimen/padding20"
         android:paddingEnd="@dimen/padding40"
+        android:paddingBottom="@dimen/padding20"
         android:text="@string/gotohomepage"
         android:textSize="@dimen/size20text"
         app:layout_constraintBottom_toBottomOf="parent"

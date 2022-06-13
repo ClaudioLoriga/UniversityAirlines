@@ -24,6 +24,8 @@ object UserRepository {
     private val retrofitServiceGetFlights = retrofit.create(GetFlightService::class.java)
     private val retrofitServiceGetPaymentInit =
         retrofit.create(GetPaymentInitialization::class.java)
+    private val retrofitServiceGetPaymentConfirmation =
+        retrofit.create(GetPaymentConfirmation::class.java)
     private val mapper = jacksonObjectMapper()
 
     suspend fun getUser(
@@ -79,6 +81,31 @@ object UserRepository {
             )
         return safeCall(service)
     }
+
+    suspend fun getPaymentConfirmation(
+        origine: String,
+        destinazione: String,
+        data_partenza: String,
+        data_ritorno: String,
+        totale_da_pagare: String,
+        numero_carta: String,
+        scadenza_carta: String,
+        cvv_carta: String
+    ): ApiResult<PaymentConfirmationResponse> {
+        val service: Call<PaymentConfirmationResponse> =
+            retrofitServiceGetPaymentConfirmation.getPaymentConfirmation(
+                origine,
+                destinazione,
+                data_partenza,
+                data_ritorno,
+                totale_da_pagare,
+                numero_carta,
+                scadenza_carta,
+                cvv_carta
+            )
+        return safeCall(service)
+    }
+
 
     private suspend fun <R : Any, T : Call<R>> safeCall(service: T): ApiResult<R> =
         withContext(Dispatchers.IO) {
@@ -146,4 +173,18 @@ interface GetPaymentInitialization {
         @Query("passengers_number") num_passeggeri: String,
         @Query("flight_price") prezzo_volo: String
     ): Call<PaymentInitResponse>
+}
+
+interface GetPaymentConfirmation {
+    @GET("/payment_confirmation.php")
+    fun getPaymentConfirmation(
+        @Query("origin") origine: String,
+        @Query("destination") destinazione: String,
+        @Query("departure_date") data_partenza: String,
+        @Query("return_date") data_ritorno: String,
+        @Query("total_to_pay") totale_da_pagare: String,
+        @Query("card_number") numero_carta: String,
+        @Query("card_expiration") scadenza_carta: String,
+        @Query("card_cvv") cvv_carta: String
+    ): Call<PaymentConfirmationResponse>
 }

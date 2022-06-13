@@ -15,6 +15,7 @@
     <string name="gotohomepage">Vai alla homepage</string>
     <string name="attenzione">Attenzione!</string>
     <string name="problema_riprovare">C\'è stato un problema durante la registrazione. \n Si prega di riprovare.</string>
+    <string name="problema_riprovare_pagamento">C\'è stato un problema durante il pagamento. \n Si prega di riprovare</string>
     <string name="welcome_user">Ciao, %1$s \n\nEsplora</string>
     <string name="npasseggeri">N.passeggeri</string>
     <string name="piu">+</string>
@@ -36,4 +37,9 @@
     <string name="cvv">CVV</string>
     <string name="placeholder_price">%1$s %2$s</string>
     <string name="paga_ora">PAGA ORA</string>
+    <string name="prenotation_description">Ecco il tuo codice di prenotazione,\nutilizzalo per il check-in!</string>
+    <string name="prenotazione_confermata">Prenotazione confermata!</string>
+    <string name="volo_acquistato">Volo acquistato</string>
+    <string name="torna_alla_home">Torna alla Home</string>
+    <string name="totale_pagato">Totale pagato:</string>
 </resources>

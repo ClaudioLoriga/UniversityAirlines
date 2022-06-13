@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/blue_app"
+    tools:context=".booking.BookingPaymentConfirmationActivity">
+
+    <TextView
+        android:id="@+id/presentationTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/padding15"
+        android:layout_marginVertical="@dimen/padding50"
+        android:text="@string/prenotazione_confermata"
+        android:textColor="@color/white"
+        android:textSize="@dimen/size28text"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/subPresentationTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/padding15"
+        android:layout_marginVertical="@dimen/padding20"
+        android:text="@string/prenotation_description"
+        android:textColor="@color/white"
+        android:textSize="@dimen/size20text"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/presentationTextView" />
+
+    <ImageView
+        android:id="@+id/airplaneImage"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:layout_marginStart="@dimen/padding30"
+        android:src="@drawable/free_airplane_jet_icon_1764_thumb"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/subPresentationTextView" />
+
+    <TextView
+        android:id="@+id/prenotationCode"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/padding30"
+        android:layout_marginVertical="@dimen/padding50"
+        android:textColor="@color/white"
+        android:textSize="@dimen/size24text"
+        app:layout_constraintStart_toEndOf="@id/airplaneImage"
+        app:layout_constraintTop_toTopOf="@id/airplaneImage"
+        tools:text="ABCDEF12" />
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintLayout"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:background="@color/white"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/airplaneImage" />
+
+    <TextView
+        android:id="@+id/voloAcquistatoPhrase"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/padding20"
+        android:text="@string/volo_acquistato"
+        android:textAppearance="@style/TextAppearance.Material3.ActionBar.Title"
+        android:textSize="@dimen/size24text"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/constraintLayout" />
+
+    <include
+        android:id="@+id/buyedFlight"
+        layout="@layout/booking_simple_flight_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginVertical="@dimen/padding40"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/voloAcquistatoPhrase" />
+
+    <TextView
+        android:id="@+id/totalPaidPhrase"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/padding20"
+        android:text="@string/totale_pagato"
+        android:textAppearance="@style/TextAppearance.Material3.ActionBar.Title"
+        android:textSize="@dimen/size24text"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/buyedFlight" />
+
+    <TextView
+        android:id="@+id/totalPaid"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/padding20"
+        android:text="@string/placeholder_price"
+        android:textAppearance="@style/TextAppearance.Material3.ActionBar.Title"
+        android:textSize="@dimen/size24text"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/buyedFlight" />
+
+    <Button
+        android:id="@+id/bottoneHome"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/padding20"
+        android:paddingStart="@dimen/padding40"
+        android:paddingTop="@dimen/padding20"
+        android:paddingEnd="@dimen/padding40"
+        android:paddingBottom="@dimen/padding20"
+        android:text="@string/torna_alla_home"
+        android:textSize="@dimen/size20text"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

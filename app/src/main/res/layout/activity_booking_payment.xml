@@ -87,7 +87,7 @@
         android:layout_marginEnd="@dimen/padding5"
         android:background="@drawable/textinputborder"
         android:hint="@string/scadenza"
-        android:inputType="numberSigned"
+        android:inputType="date"
         android:paddingStart="@dimen/padding10"
         android:paddingTop="@dimen/padding10"
         android:paddingEnd="@dimen/padding5"
