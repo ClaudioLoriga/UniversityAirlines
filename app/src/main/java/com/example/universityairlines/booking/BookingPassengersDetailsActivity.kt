@@ -4,10 +4,7 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
-import android.widget.ArrayAdapter
-import android.widget.Toast
 import androidx.core.widget.doOnTextChanged
-import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.universityairlines.R
 import com.example.universityairlines.databinding.PassengerDetailItemBinding
 import com.example.universityairlines.databinding.PassengersDetailsListBinding

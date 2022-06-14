@@ -6,7 +6,7 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.lifecycleScope
 import com.example.universityairlines.R
-import com.example.universityairlines.UserRepository
+import com.example.universityairlines.repository.UserRepository
 import com.example.universityairlines.databinding.ActivityRegistrationBinding
 import com.example.universityairlines.model.ApiRegistrationResult
 import com.google.android.material.dialog.MaterialAlertDialogBuilder

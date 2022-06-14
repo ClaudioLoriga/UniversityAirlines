@@ -5,7 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.universityairlines.UserRepository
+import com.example.universityairlines.repository.UserRepository
 import com.example.universityairlines.booking.adapter.BookingFlightListAdapter
 import com.example.universityairlines.databinding.BookingFlightsListBinding
 import com.example.universityairlines.model.ApiResult

@@ -8,7 +8,7 @@ import androidx.lifecycle.lifecycleScope
 import com.example.universityairlines.homepage.HomepageActivity
 import com.example.universityairlines.homepage.HomepageActivity.Companion.EXTRAKEY
 import com.example.universityairlines.registration.RegistrationActivity
-import com.example.universityairlines.UserRepository
+import com.example.universityairlines.repository.UserRepository
 import com.example.universityairlines.databinding.LoginLayoutBinding
 import com.example.universityairlines.model.ApiResult
 import com.google.android.material.dialog.MaterialAlertDialogBuilder

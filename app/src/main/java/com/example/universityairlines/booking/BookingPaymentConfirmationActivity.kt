@@ -1,12 +1,11 @@
 package com.example.universityairlines.booking
 
-import android.app.AlertDialog
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.lifecycle.lifecycleScope
 import com.example.universityairlines.R
-import com.example.universityairlines.UserRepository
+import com.example.universityairlines.repository.UserRepository
 import com.example.universityairlines.databinding.ActivityBookingPaymentConfirmationBinding
 import com.example.universityairlines.homepage.HomepageActivity
 import com.example.universityairlines.model.ApiResult

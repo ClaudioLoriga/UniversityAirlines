@@ -8,7 +8,7 @@ import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.universityairlines.R
-import com.example.universityairlines.UserRepository
+import com.example.universityairlines.repository.UserRepository
 import com.example.universityairlines.booking.adapter.AirportAdapter
 import com.example.universityairlines.model.ApiResult
 import com.example.universityairlines.model.GetAirportResponse

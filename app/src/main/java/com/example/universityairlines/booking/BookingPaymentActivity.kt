@@ -5,7 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.lifecycle.lifecycleScope
 import com.example.universityairlines.R
-import com.example.universityairlines.UserRepository
+import com.example.universityairlines.repository.UserRepository
 import com.example.universityairlines.databinding.ActivityBookingPaymentBinding
 import com.example.universityairlines.model.ApiResult
 import com.example.universityairlines.model.Flight
