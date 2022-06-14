@@ -8,9 +8,7 @@
         android:id="@+id/textviewname"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textSize="25sp"
-        android:padding="8dp"
+        android:textSize="@dimen/size24text"
+        android:padding="@dimen/padding10"
         android:textColor="@color/blue_app"/>
-
-
 </LinearLayout>

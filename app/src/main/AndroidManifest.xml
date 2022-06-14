@@ -24,6 +24,9 @@
             android:name=".booking.BookingFlightsListActivity"
             android:exported="false" />
         <activity
+            android:name=".booking.BookingAirportList"
+            android:exported="false" />
+        <activity
             android:name=".registration.RegistrationSuccessActivity"
             android:exported="false" />
         <activity

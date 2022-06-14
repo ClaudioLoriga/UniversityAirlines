@@ -30,11 +30,13 @@ class BookingActivity : AppCompatActivity() {
         var number = 0
 
         binding.edittextorigine.setOnClickListener {
-            // fai cose ....
+            val intent = Intent(this, BookingAirportList::class.java)
+            startActivity(intent)
         }
 
         binding.edittextdestinazione.setOnClickListener {
-            // fai altre cose...
+            val intent = Intent(this, BookingAirportList::class.java)
+            startActivity(intent)
         }
 
         binding.edittextandata.setOnClickListener {

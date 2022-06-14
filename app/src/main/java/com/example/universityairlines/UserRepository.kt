@@ -22,6 +22,7 @@ object UserRepository {
     private val retrofitServiceLogin = retrofit.create(GetUserService::class.java)
     private val retrofitServiceRegistration = retrofit.create(SetUserService::class.java)
     private val retrofitServiceGetFlights = retrofit.create(GetFlightService::class.java)
+    private val retrofitServiceGetAirports = retrofit.create(GetAirportsService::class.java)
     private val retrofitServiceGetPaymentInit =
         retrofit.create(GetPaymentInitialization::class.java)
     private val retrofitServiceGetPaymentConfirmation =
@@ -58,6 +59,23 @@ object UserRepository {
                 dataDiPartenza,
                 dataDiRitorno,
                 numPasseggeri
+            )
+        return safeCall(service)
+    }
+
+    suspend fun getAirports(
+        code: String, name: String, citycode: String,
+        city: String, countrycode: String, country: String, continent: String
+    ): ApiResult<GetAirportResponse> {
+        val service: Call<GetAirportResponse> =
+            retrofitServiceGetAirports.getAirports(
+                code,
+                name,
+                citycode,
+                city,
+                countrycode,
+                country,
+                continent
             )
         return safeCall(service)
     }
@@ -105,7 +123,6 @@ object UserRepository {
             )
         return safeCall(service)
     }
-
 
     private suspend fun <R : Any, T : Call<R>> safeCall(service: T): ApiResult<R> =
         withContext(Dispatchers.IO) {
@@ -161,6 +178,19 @@ interface GetFlightService {
         @Query("return_date") dataDiRitorno: String,
         @Query("passengers_number") numPasseggeri: String
     ): Call<FlightsResponse>
+}
+
+interface GetAirportsService {
+    @GET("/get_airports.php")
+    fun getAirports(
+        @Query("code") code: String,
+        @Query("name") name: String,
+        @Query("citycode") citycode: String,
+        @Query("city") city: String,
+        @Query("countrycode") countrycode: String,
+        @Query("country") country: String,
+        @Query("continent") continent: String
+    ): Call<GetAirportResponse>
 }
 
 interface GetPaymentInitialization {

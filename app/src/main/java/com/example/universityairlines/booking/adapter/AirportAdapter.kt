@@ -1,4 +1,4 @@
-package com.example.universityairlines.airportlist
+package com.example.universityairlines.booking.adapter
 
 import android.view.LayoutInflater
 import android.view.View
@@ -6,9 +6,14 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.universityairlines.R
+import androidx.recyclerview.widget.DiffUtil as BaseDiffUtil
+import androidx.recyclerview.widget.ListAdapter
+import com.example.universityairlines.model.Airport
 
-
-class AirportAdapter(private val mList: List<Airport>) : RecyclerView.Adapter<AirportAdapter.ViewHolder>() {
+class AirportAdapter(private val mList: List<Airport>) :
+    ListAdapter<Airport, AirportAdapter.ViewHolder>(
+        DiffUtil()
+    ) {
 
     // create new views
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -30,6 +35,17 @@ class AirportAdapter(private val mList: List<Airport>) : RecyclerView.Adapter<Ai
 
 
     }
+
+    class DiffUtil : BaseDiffUtil.ItemCallback<Airport>() {
+        override fun areItemsTheSame(oldItem: Airport, newItem: Airport): Boolean {
+            return oldItem == newItem
+        }
+
+        override fun areContentsTheSame(oldItem: Airport, newItem: Airport): Boolean {
+            return oldItem == newItem
+        }
+    }
+
 
     // return the number of the items in the list
     override fun getItemCount(): Int {

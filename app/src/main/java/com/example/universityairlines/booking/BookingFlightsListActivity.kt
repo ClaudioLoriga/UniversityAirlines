@@ -35,7 +35,6 @@ class BookingFlightsListActivity : AppCompatActivity() {
         val stringPasseggeri = intent.getStringExtra(EXTRAKEY_PASSEGGERI).orEmpty()
 
         lifecycleScope.launch {
-
             val response = UserRepository.getFlights(
                 stringOrigine,
                 stringDestinazione,
