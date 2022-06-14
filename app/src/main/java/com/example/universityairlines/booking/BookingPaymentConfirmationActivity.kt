@@ -1,11 +1,14 @@
 package com.example.universityairlines.booking
 
+import android.app.AlertDialog
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.lifecycle.lifecycleScope
 import com.example.universityairlines.R
 import com.example.universityairlines.UserRepository
 import com.example.universityairlines.databinding.ActivityBookingPaymentConfirmationBinding
+import com.example.universityairlines.homepage.HomepageActivity
 import com.example.universityairlines.model.ApiResult
 import com.example.universityairlines.model.Flight
 import com.example.universityairlines.ui.getString
@@ -34,8 +37,8 @@ class BookingPaymentConfirmationActivity : AppCompatActivity() {
                 val response = UserRepository.getPaymentConfirmation(
                     flight.origin,
                     flight.destination,
-                    flight.origin,
-                    flight.destination,
+                    flight.departureDate,
+                    flight.returnDate,
                     totalToPay,
                     cardNumber,
                     cardExpiration,
@@ -65,8 +68,8 @@ class BookingPaymentConfirmationActivity : AppCompatActivity() {
 
                         binding.totalPaid.text = binding.getString(
                             R.string.placeholder_price,
-                            totalToPay,
-                            flight.currency
+                            "",
+                            totalToPay
                         )
                     }
 
@@ -76,6 +79,11 @@ class BookingPaymentConfirmationActivity : AppCompatActivity() {
                             resources.getString(R.string.problema_riprovare_pagamento)
                         ).show()
                 }
+            }
+
+            binding.bottoneHome.setOnClickListener {
+                val intent = Intent(this, HomepageActivity::class.java)
+                startActivity(intent)
             }
         }
     }

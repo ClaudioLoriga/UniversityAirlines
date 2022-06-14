@@ -76,17 +76,17 @@ class BookingPaymentActivity : AppCompatActivity() {
                     val intent = Intent(this, BookingPaymentConfirmationActivity::class.java)
                     intent.putExtra("flight", flight)
                     intent.putExtra(BookingPaymentConfirmationActivity.EXTRAKEY_TTP, binding.paySumTextView.text)
-                    intent.putExtra(BookingPaymentConfirmationActivity.EXTRAKEY_CARD_NUMBER, binding.cardNumberEditText.text)
-                    intent.putExtra(BookingPaymentConfirmationActivity.EXTRAKEY_CARD_EXPIRATION, binding.expireEditText.text)
-                    intent.putExtra(BookingPaymentConfirmationActivity.EXTRAKEY_CVV, binding.cvvEditText.text)
+                    intent.putExtra(BookingPaymentConfirmationActivity.EXTRAKEY_CARD_NUMBER, binding.cardNumberEditText.text.toString())
+                    intent.putExtra(BookingPaymentConfirmationActivity.EXTRAKEY_CARD_EXPIRATION, binding.expireEditText.text.toString())
+                    intent.putExtra(BookingPaymentConfirmationActivity.EXTRAKEY_CVV, binding.cvvEditText.text.toString())
                     startActivity(intent)
                 }
             }
 
             binding.paySumTextView.text = binding.getString(
                 R.string.placeholder_price,
-                flight.price.toString(),
-                flight.currency
+                "",
+                flight.price.toString()
             )
         }
 

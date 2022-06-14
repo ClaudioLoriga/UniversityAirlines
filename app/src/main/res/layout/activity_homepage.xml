@@ -93,18 +93,15 @@
 
     <Button
         android:id="@+id/buttonPrenotazione"
-        android:layout_width="283dp"
-        android:layout_height="66dp"
-        android:layout_marginStart="46dp"
-        android:layout_marginEnd="46dp"
-        android:layout_marginBottom="24dp"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
         android:backgroundTint="@color/blue_app"
         android:text="@string/prenota_volo"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.944" />
+        android:layout_margin="@dimen/padding30"
+        android:padding="@dimen/padding15"/>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
