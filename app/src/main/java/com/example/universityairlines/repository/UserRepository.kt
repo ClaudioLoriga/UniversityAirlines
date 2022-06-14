@@ -1,4 +1,4 @@
-package com.example.universityairlines
+package com.example.universityairlines.repository
 
 import com.example.universityairlines.model.*
 import com.fasterxml.jackson.module.kotlin.jacksonObjectMapper

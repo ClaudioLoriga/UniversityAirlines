@@ -12,6 +12,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.UniversityAirlines">
         <activity
+            android:name=".check_in.CheckInConfirmedActivity"
+            android:exported="false" />
+        <activity
+            android:name=".check_in.CheckInActivity"
+            android:exported="false" />
+        <activity
             android:name=".booking.BookingPaymentConfirmationActivity"
             android:exported="false" />
         <activity
@@ -28,7 +34,8 @@
             android:exported="false" />
         <activity
             android:name=".registration.RegistrationSuccessActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:theme="@style/Theme.UniversityAirlines.NoActionBar.Fullscreen" />
         <activity
             android:name=".registration.RegistrationActivity"
             android:parentActivityName=".login.LoginActivity" />
@@ -38,7 +45,7 @@
         <activity android:name=".booking.BookingActivity" />
         <activity android:name=".homepage.HomepageActivity" />
         <activity
-            android:name=".SplashActivity"
+            android:name=".splash.SplashActivity"
             android:exported="true"
             android:theme="@style/Theme.UniversityAirlines.NoActionBar.Fullscreen">
             <intent-filter>

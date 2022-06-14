@@ -83,6 +83,8 @@ class BookingPaymentConfirmationActivity : AppCompatActivity() {
 
             binding.bottoneHome.setOnClickListener {
                 val intent = Intent(this, HomepageActivity::class.java)
+                intent.putExtra("flight", flight)
+                intent.putExtra("pnr", binding.prenotationCode.text)
                 startActivity(intent)
             }
         }

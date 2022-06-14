@@ -100,7 +100,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/padding20"
-        android:text="@string/placeholder_price"
+        tools:text="@string/placeholder_price"
         android:textAppearance="@style/TextAppearance.Material3.ActionBar.Title"
         android:textSize="@dimen/size24text"
         app:layout_constraintEnd_toEndOf="parent"

@@ -46,4 +46,8 @@
     <string name="check_in">Check-in</string>
     <string name="cerca">cerca</string>
     <string name="prenota_volo">prenota volo</string>
+    <string name="effettua_check_in">Effettua Check-in</string>
+    <string name="check_in_effettuato">Check-in effettuato!</string>
+    <string name="check_in_advise">"Ricorda di visionare il nostro\ndocumento informativo sui\nbagagli non ammessi."</string>
+    <string name="volo">Volo</string>
 </resources>

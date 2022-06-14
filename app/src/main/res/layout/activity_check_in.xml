@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".check_in.CheckInActivity">
+
+    <TextView
+        android:id="@+id/voloSelezionatoTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/padding20"
+        android:text="@string/volo_selezionato"
+        android:textAppearance="@style/TextAppearance.MaterialComponents.Headline5"
+        android:textSize="@dimen/size28text"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <include
+        android:id="@+id/buyedFlight"
+        layout="@layout/booking_simple_flight_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginVertical="@dimen/padding20"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/voloSelezionatoTextView" />
+
+    <Button
+        android:id="@+id/effettuaCheckInButton"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/padding40"
+        android:layout_marginEnd="@dimen/padding40"
+        android:layout_marginBottom="@dimen/padding20"
+        android:background="@drawable/roundedbutton"
+        android:padding="@dimen/padding10"
+        android:text="@string/effettua_check_in"
+        android:textSize="@dimen/size20text"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
