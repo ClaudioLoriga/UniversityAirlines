@@ -10,7 +10,7 @@ import androidx.recyclerview.widget.DiffUtil as BaseDiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import com.example.universityairlines.model.Airport
 
-class AirportAdapter(private val mList: List<Airport>) :
+class AirportAdapter(private val mList: List<Airport>, private val callBack: (String) -> Unit) :
     ListAdapter<Airport, AirportAdapter.ViewHolder>(
         DiffUtil()
     ) {
@@ -31,8 +31,10 @@ class AirportAdapter(private val mList: List<Airport>) :
         val airport = mList[position]
 
         // sets the text to the textview from our itemHolder class
-        holder.textView1.text = airport.name
-
+        holder.nameAirport.text = airport.name
+        holder.nameAirport.setOnClickListener {
+            callBack(airport.name)
+        }
 
     }
 
@@ -54,6 +56,6 @@ class AirportAdapter(private val mList: List<Airport>) :
 
     // Holds the views for adding it to image and text
     class ViewHolder(ItemView: View) : RecyclerView.ViewHolder(ItemView) {
-        val textView1: TextView = itemView.findViewById(R.id.textviewname)
+        val nameAirport: TextView = itemView.findViewById(R.id.textviewname)
     }
 }
