@@ -1,8 +1,10 @@
 package com.example.universityairlines.booking
 
+import android.app.Activity
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.activity.result.contract.ActivityResultContracts
 import com.example.universityairlines.booking.BookingFlightsListActivity.Companion.EXTRAKEY_ANDATA
 import com.example.universityairlines.booking.BookingFlightsListActivity.Companion.EXTRAKEY_DESTINAZIONE
 import com.example.universityairlines.booking.BookingFlightsListActivity.Companion.EXTRAKEY_ORIGINE
@@ -14,7 +16,7 @@ import com.example.universityairlines.ui.toPrettyDate
 
 class BookingActivity : AppCompatActivity() {
 
-    private val requestCode = 854
+
     private lateinit var binding: BookingFormLayoutBinding
     private val pickerAndata by lazy {
         MaterialDatePicker.Builder.datePicker()
@@ -22,6 +24,25 @@ class BookingActivity : AppCompatActivity() {
             .setSelection(MaterialDatePicker.todayInUtcMilliseconds())
             .build()
     }
+    var resultLauncherOrigine =
+        registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
+            if ((result.resultCode == Activity.RESULT_OK) && result != null) {
+                // There are no request codes
+                val data: Intent? = result.data
+                binding.edittextorigine.setText(data?.getStringExtra(BookingAirportList.EXTRAKEY_AIRPORT))
+
+            }
+        }
+
+    var resultLauncherDestinazione =
+        registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
+            if ((result.resultCode == Activity.RESULT_OK) && result != null) {
+                // There are no request codes
+                val data: Intent? = result.data
+                binding.edittextdestinazione.setText(data?.getStringExtra(BookingAirportList.EXTRAKEY_AIRPORT))
+
+            }
+        }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -32,12 +53,12 @@ class BookingActivity : AppCompatActivity() {
 
         binding.edittextorigine.setOnClickListener {
             val intent = Intent(this, BookingAirportList::class.java)
-            startActivityForResult(intent, requestCode)
+            resultLauncherOrigine.launch(intent)
         }
 
         binding.edittextdestinazione.setOnClickListener {
             val intent = Intent(this, BookingAirportList::class.java)
-            startActivity(intent)
+            resultLauncherDestinazione.launch(intent)
         }
 
         binding.edittextandata.setOnClickListener {
@@ -70,19 +91,19 @@ class BookingActivity : AppCompatActivity() {
         binding.cercavolibutton.setOnClickListener {
             val intent = Intent(this, BookingFlightsListActivity::class.java)
             intent.putExtra(EXTRAKEY_ORIGINE, binding.edittextorigine.text.toString())
-            intent.putExtra(EXTRAKEY_DESTINAZIONE, binding.edittextdestinazione.text.toString())
+            intent.putExtra(
+                EXTRAKEY_DESTINAZIONE,
+                binding.edittextdestinazione.text.toString()
+            )
             intent.putExtra(EXTRAKEY_ANDATA, binding.edittextandata.text.toString())
             intent.putExtra(EXTRAKEY_RITORNO, binding.edittextritorno.text.toString())
-            intent.putExtra(EXTRAKEY_PASSEGGERI, binding.npasseggeriedittext.text.toString())
+            intent.putExtra(
+                EXTRAKEY_PASSEGGERI,
+                binding.npasseggeriedittext.text.toString()
+            )
             startActivity(intent)
         }
     }
-
-    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-        super.onActivityResult(requestCode, resultCode, data)
-
-
-    }
-
 }
+
 

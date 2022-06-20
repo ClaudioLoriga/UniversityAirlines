@@ -1,5 +1,6 @@
 package com.example.universityairlines.booking
 
+import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
 import android.widget.TextView
@@ -26,35 +27,40 @@ class BookingAirportList : AppCompatActivity() {
         super.onCreate(savedInstanceState)
 
         setContentView(R.layout.activity_airport_list)
-        bottone = findViewById(R.id.idBottone)
         recyclerview = findViewById(R.id.recycleviewairports)
 
-        bottone.setOnClickListener {
-            lifecycleScope.launch {
-                val response = UserRepository.getAirports(
-                    "code",
-                    "name",
-                    "citycode",
-                    "city",
-                    "countrycode",
-                    "country",
-                    "continent"
-                )
 
-                when (response) {
-                    is ApiResult.Success -> {
-                        adapter = AirportAdapter(response.value.airports)
-                        recyclerview.adapter = adapter
-                        recyclerview.layoutManager = LinearLayoutManager(this@BookingAirportList)
-                        //creaListaAeroporti(response.value)
-                    }
-                    is ApiResult.Failure -> Unit// Mappare errore
+        lifecycleScope.launch {
+            val response = UserRepository.getAirports(
+                "code",
+                "name",
+                "citycode",
+                "city",
+                "countrycode",
+                "country",
+                "continent"
+            )
+
+            when (response) {
+                is ApiResult.Success -> {
+                    adapter = AirportAdapter(response.value.airports, ::getAirportName)
+                    recyclerview.adapter = adapter
+                    recyclerview.layoutManager = LinearLayoutManager(this@BookingAirportList)
                 }
+                is ApiResult.Failure -> Unit// Mappare errore
             }
         }
+
     }
 
-    fun creaListaAeroporti(response: GetAirportResponse) {
-        adapter.submitList(response.airports)
+    companion object {
+        const val EXTRAKEY_AIRPORT = "Volo"
+    }
+
+    fun getAirportName(airportName: String) {
+        val intent = Intent()
+        intent.putExtra(EXTRAKEY_AIRPORT, airportName)
+        setResult(RESULT_OK, intent)
+        finish()
     }
 }
