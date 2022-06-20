@@ -3,6 +3,7 @@ package com.example.universityairlines.booking
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.core.content.ContextCompat.startActivity
 import androidx.lifecycle.lifecycleScope
 import com.example.universityairlines.R
 import com.example.universityairlines.repository.UserRepository
@@ -25,71 +26,48 @@ class BookingPaymentConfirmationActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         val flight = intent.extras?.getParcelable<Flight>("flight")
+        val pnr = intent.getStringExtra(EXTRAKEY_PNR).orEmpty()
         val totalToPay = intent.getStringExtra(EXTRAKEY_TTP).orEmpty()
-        val cardNumber = intent.getStringExtra(EXTRAKEY_CARD_NUMBER).orEmpty()
-        val cardExpiration = intent.getStringExtra(EXTRAKEY_CARD_EXPIRATION).orEmpty()
-        val cardCvv = intent.getStringExtra(EXTRAKEY_CVV).orEmpty()
 
         if (flight != null) {
+            val (data, ora) = flight.departureDate.split(" ")
+            binding.prenotationCode.text = pnr
 
-            lifecycleScope.launch {
-                val response = UserRepository.getPaymentConfirmation(
+            with(binding.buyedFlight) {
+                andataTextView.text = binding.getString(
+                    R.string.airport_description,
                     flight.origin,
-                    flight.destination,
-                    flight.departureDate,
-                    flight.returnDate,
-                    totalToPay,
-                    cardNumber,
-                    cardExpiration,
-                    cardCvv
+                    flight.originIata
                 )
+                ritornoTextView.text = binding.getString(
+                    R.string.airport_description,
+                    flight.destination,
+                    flight.destinationIata
+                )
+                dataTextView.text =
+                    binding.getString(R.string.booking_details_flight, "Data", data)
+                oraTextView.text =
+                    binding.getString(R.string.booking_details_flight, "Ora", ora)
 
-                when (response) {
-                    is ApiResult.Success -> {
-                        val (data, ora) = flight.departureDate.split(" ")
-                        binding.prenotationCode.text = response.value.pnr
-                        with(binding.buyedFlight) {
-                            andataTextView.text = binding.getString(
-                                R.string.airport_description,
-                                flight.origin,
-                                flight.originIata
-                            )
-                            ritornoTextView.text = binding.getString(
-                                R.string.airport_description,
-                                flight.destination,
-                                flight.destinationIata
-                            )
-                            dataTextView.text =
-                                binding.getString(R.string.booking_details_flight, "Data", data)
-                            oraTextView.text =
-                                binding.getString(R.string.booking_details_flight, "Ora", ora)
-                        }
 
-                        binding.totalPaid.text = binding.getString(
-                            R.string.placeholder_price,
-                            "",
-                            totalToPay
-                        )
-                    }
-
-                    is ApiResult.Failure -> MaterialAlertDialogBuilder(this@BookingPaymentConfirmationActivity)
-                        .setTitle(resources.getString(R.string.attenzione))
-                        .setMessage(
-                            resources.getString(R.string.problema_riprovare_pagamento)
-                        ).show()
-                }
+                binding.totalPaid.text = binding.getString(
+                    R.string.placeholder_price,
+                    "",
+                    totalToPay
+                )
             }
+        }
 
-            binding.bottoneHome.setOnClickListener {
-                val intent = Intent(this, HomepageActivity::class.java)
-                intent.putExtra("flight", flight)
-                intent.putExtra("pnr", binding.prenotationCode.text)
-                startActivity(intent)
-            }
+        binding.bottoneHome.setOnClickListener {
+            val intent = Intent(this, HomepageActivity::class.java)
+            intent.putExtra("flight", flight)
+            intent.putExtra("pnr", binding.prenotationCode.text)
+            startActivity(intent)
         }
     }
 
     companion object {
+        const val EXTRAKEY_PNR = "pnr"
         const val EXTRAKEY_TTP = "totale_da_pagare"
         const val EXTRAKEY_CARD_NUMBER = "numero_carta"
         const val EXTRAKEY_CARD_EXPIRATION = "scadenza_carta"

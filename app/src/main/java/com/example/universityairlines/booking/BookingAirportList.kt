@@ -46,7 +46,7 @@ class BookingAirportList : AppCompatActivity() {
                         adapter = AirportAdapter(response.value.airports)
                         recyclerview.adapter = adapter
                         recyclerview.layoutManager = LinearLayoutManager(this@BookingAirportList)
-                        creaListaAeroporti(response.value)
+                        //creaListaAeroporti(response.value)
                     }
                     is ApiResult.Failure -> Unit// Mappare errore
                 }

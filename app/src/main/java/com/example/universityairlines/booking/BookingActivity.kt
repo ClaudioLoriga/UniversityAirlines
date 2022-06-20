@@ -14,6 +14,7 @@ import com.example.universityairlines.ui.toPrettyDate
 
 class BookingActivity : AppCompatActivity() {
 
+    private val requestCode = 854
     private lateinit var binding: BookingFormLayoutBinding
     private val pickerAndata by lazy {
         MaterialDatePicker.Builder.datePicker()
@@ -31,7 +32,7 @@ class BookingActivity : AppCompatActivity() {
 
         binding.edittextorigine.setOnClickListener {
             val intent = Intent(this, BookingAirportList::class.java)
-            startActivity(intent)
+            startActivityForResult(intent, requestCode)
         }
 
         binding.edittextdestinazione.setOnClickListener {
@@ -75,6 +76,12 @@ class BookingActivity : AppCompatActivity() {
             intent.putExtra(EXTRAKEY_PASSEGGERI, binding.npasseggeriedittext.text.toString())
             startActivity(intent)
         }
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+
+
     }
 
 }

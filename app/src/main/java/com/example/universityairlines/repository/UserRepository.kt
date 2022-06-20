@@ -4,6 +4,7 @@ import com.example.universityairlines.model.*
 import com.fasterxml.jackson.module.kotlin.jacksonObjectMapper
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
+import okhttp3.OkHttpClient
 import retrofit2.Call
 import retrofit2.Response
 import retrofit2.Retrofit
@@ -11,12 +12,19 @@ import retrofit2.awaitResponse
 import retrofit2.converter.jackson.JacksonConverterFactory
 import retrofit2.http.GET
 import retrofit2.http.Query
+import java.util.concurrent.TimeUnit
+
 
 object UserRepository {
+
+    private val okHttpClient: OkHttpClient =
+        OkHttpClient().newBuilder().readTimeout(60, TimeUnit.SECONDS)
+            .connectTimeout(60, TimeUnit.SECONDS).build()
 
     private var retrofit: Retrofit =
         Retrofit.Builder()
             .baseUrl("https://universityairlines.altervista.org")
+            .client(okHttpClient)
             .addConverterFactory(JacksonConverterFactory.create()).build()
 
     private val retrofitServiceLogin = retrofit.create(GetUserService::class.java)
