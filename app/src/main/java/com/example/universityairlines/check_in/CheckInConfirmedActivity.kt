@@ -1,9 +1,11 @@
 package com.example.universityairlines.check_in
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.example.universityairlines.R
 import com.example.universityairlines.databinding.ActivityCheckInConfirmedBinding
+import com.example.universityairlines.homepage.HomepageActivity
 
 class CheckInConfirmedActivity : AppCompatActivity() {
 
@@ -19,5 +21,10 @@ class CheckInConfirmedActivity : AppCompatActivity() {
         binding.confirmedCheckIn.subPresentationTextView.text = getString(R.string.check_in_advise)
         binding.confirmedCheckIn.totalPaidPhrase.text = ""
         binding.confirmedCheckIn.voloAcquistatoPhrase.text = getString(R.string.volo)
+
+        binding.confirmedCheckIn.bottoneHome.setOnClickListener {
+            val intent = Intent(this, HomepageActivity::class.java)
+            startActivity(intent)
+        }
     }
 }

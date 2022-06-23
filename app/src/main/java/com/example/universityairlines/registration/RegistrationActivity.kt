@@ -29,7 +29,12 @@ class RegistrationActivity : AppCompatActivity() {
 
         binding.bottoneIscrizione.setOnClickListener {
 
+
             registrationUser()
+
+
+            registrationUser()
+            it.isEnabled = false
 
         }
 
@@ -53,7 +58,8 @@ class RegistrationActivity : AppCompatActivity() {
             when (val result = UserRepository.setUser(mail, password, nome, cognome)) {
                 is ApiRegistrationResult.Success -> {
                     // navigate to next screen with data
-                    val intent = Intent(this@RegistrationActivity, RegistrationSuccessActivity::class.java)
+                    val intent =
+                        Intent(this@RegistrationActivity, RegistrationSuccessActivity::class.java)
                     intent.putExtra(RegistrationSuccessActivity.EXTRAKEY, nome)
                     progressDialog.hide()
                     startActivity(intent)
@@ -62,6 +68,9 @@ class RegistrationActivity : AppCompatActivity() {
                     // show error
                     MaterialAlertDialogBuilder(this@RegistrationActivity)
                         .setTitle(resources.getString(R.string.attenzione))
+                        .setPositiveButton(
+                            "Ok"
+                        ) { dialog, which -> dialog?.dismiss() }
                         .setMessage(
                             resources.getString(R.string.problema_riprovare)
                         ).show()
@@ -69,5 +78,10 @@ class RegistrationActivity : AppCompatActivity() {
             }
         }
 
+    }
+
+    override fun onStart() {
+        super.onStart()
+        binding.bottoneIscrizione.isEnabled = true
     }
 }

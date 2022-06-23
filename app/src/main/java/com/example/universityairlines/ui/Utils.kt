@@ -40,5 +40,9 @@ fun ActivityCheckInBinding.getString(
 ) =
     root.context.resources.getString(id, *params)
 
+fun addBackArrowToActivity () {
+
+}
+
 
 

@@ -5,10 +5,8 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.example.universityairlines.R
 import com.example.universityairlines.booking.BookingActivity
-import com.example.universityairlines.booking.BookingFlightsListActivity
 import com.example.universityairlines.check_in.CheckInActivity
 import com.example.universityairlines.databinding.ActivityHomepageBinding
-import com.example.universityairlines.model.Flight
 
 class HomepageActivity : AppCompatActivity() {
 
