@@ -22,7 +22,10 @@ class RegistrationActivity : AppCompatActivity() {
 
         setContentView(view)
 
-        binding.bottoneIscrizione.setOnClickListener { registrationUser() }
+        binding.bottoneIscrizione.setOnClickListener {
+            registrationUser()
+            it.isEnabled = false
+        }
 
         //Torna indietro nell'activity del login
         val actionBar = supportActionBar
@@ -40,7 +43,8 @@ class RegistrationActivity : AppCompatActivity() {
             when (val result = UserRepository.setUser(mail, password, nome, cognome)) {
                 is ApiRegistrationResult.Success -> {
                     // navigate to next screen with data
-                    val intent = Intent(this@RegistrationActivity, RegistrationSuccessActivity::class.java)
+                    val intent =
+                        Intent(this@RegistrationActivity, RegistrationSuccessActivity::class.java)
                     intent.putExtra(RegistrationSuccessActivity.EXTRAKEY, nome)
                     startActivity(intent)
                 }
@@ -48,11 +52,19 @@ class RegistrationActivity : AppCompatActivity() {
                     // show error
                     MaterialAlertDialogBuilder(this@RegistrationActivity)
                         .setTitle(resources.getString(R.string.attenzione))
+                        .setPositiveButton(
+                            "Ok"
+                        ) { dialog, which -> dialog?.dismiss() }
                         .setMessage(
                             resources.getString(R.string.problema_riprovare)
                         ).show()
                 }
             }
         }
+    }
+
+    override fun onStart() {
+        super.onStart()
+        binding.bottoneIscrizione.isEnabled = true
     }
 }

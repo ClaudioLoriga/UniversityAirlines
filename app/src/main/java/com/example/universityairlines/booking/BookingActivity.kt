@@ -53,11 +53,13 @@ class BookingActivity : AppCompatActivity() {
 
         binding.edittextorigine.setOnClickListener {
             val intent = Intent(this, BookingAirportList::class.java)
+            it.isEnabled = false
             resultLauncherOrigine.launch(intent)
         }
 
         binding.edittextdestinazione.setOnClickListener {
             val intent = Intent(this, BookingAirportList::class.java)
+            it.isEnabled = false
             resultLauncherDestinazione.launch(intent)
         }
 
@@ -101,8 +103,17 @@ class BookingActivity : AppCompatActivity() {
                 EXTRAKEY_PASSEGGERI,
                 binding.npasseggeriedittext.text.toString()
             )
+            it.isEnabled = false
             startActivity(intent)
         }
+
+    }
+
+    override fun onStart() {
+        super.onStart()
+        binding.cercavolibutton.isEnabled = true
+        binding.edittextorigine.isEnabled = true
+        binding.edittextdestinazione.isEnabled = true
     }
 }
 

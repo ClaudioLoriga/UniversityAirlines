@@ -79,6 +79,7 @@ class BookingPaymentActivity : AppCompatActivity() {
 
 
                 binding.buttonPay.setOnClickListener {
+                    it.isEnabled = false
                     lifecycleScope.launch {
                         val responseConfirmation = UserRepository.getPaymentConfirmation(
                             flight.origin,
@@ -123,6 +124,9 @@ class BookingPaymentActivity : AppCompatActivity() {
 
                             is ApiResult.Failure -> MaterialAlertDialogBuilder(this@BookingPaymentActivity)
                                 .setTitle(resources.getString(R.string.attenzione))
+                                .setPositiveButton(
+                                    "Ok"
+                                ) { dialog, which -> dialog?.dismiss() }
                                 .setMessage(
                                     resources.getString(R.string.problema_riprovare_pagamento)
                                 ).show()
@@ -137,23 +141,9 @@ class BookingPaymentActivity : AppCompatActivity() {
             )
         }
     }
+
+    override fun onStart() {
+        super.onStart()
+        binding.buttonPay.isEnabled = true
+    }
 }
-
-
-/*val (data, ora) = entry.departureDate.split(" ")
-val stringAndata =
-    binding.getString(R.string.airport_description, entry.origin, entry.originIata)
-val stringRitorno = binding.getString(
-    R.string.airport_description,
-    entry.destination,
-    entry.destinationIata
-)
-val stringData = binding.getString(R.string.booking_details_flight, "Data", data)
-val stringOra = binding.getString(R.string.booking_details_flight, "Ora", ora)
-with(binding) {
-    andataTextView.text = stringAndata
-    ritornoTextView.text = stringRitorno
-    dataTextView.text = stringData
-    oraTextView.text = stringOra
-
- */

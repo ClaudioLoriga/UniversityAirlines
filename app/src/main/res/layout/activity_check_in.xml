@@ -31,13 +31,11 @@
 
     <Button
         android:id="@+id/effettuaCheckInButton"
-        android:layout_width="0dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/padding40"
-        android:layout_marginEnd="@dimen/padding40"
-        android:layout_marginBottom="@dimen/padding20"
+        android:layout_margin="@dimen/padding40"
         android:background="@drawable/roundedbutton"
-        android:padding="@dimen/padding10"
+        android:padding="@dimen/padding15"
         android:text="@string/effettua_check_in"
         android:textSize="@dimen/size20text"
         app:layout_constraintBottom_toBottomOf="parent"
