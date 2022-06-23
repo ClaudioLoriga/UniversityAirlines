@@ -89,17 +89,19 @@
 
     <Button
         android:id="@+id/bottoneIscrizione"
-        android:layout_width="357dp"
-        android:layout_height="84dp"
-        android:text="Iscrivimi"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.555"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.873" />
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/registrazione"
+        android:layout_marginTop="@dimen/padding20"
+        android:layout_marginStart="@dimen/padding40"
+        android:layout_marginEnd="@dimen/padding40"
+        android:paddingTop="@dimen/padding15"
+        android:paddingBottom="@dimen/padding15"
+        android:textSize="@dimen/size20text"
+        app:layout_constraintTop_toBottomOf="@id/terminiCondizioni" />
 
     <CheckBox
+        android:id="@+id/terminiCondizioni"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Ho letto termini e condizioni"

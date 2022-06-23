@@ -1,6 +1,7 @@
 package com.example.universityairlines.registration
 
 
+import android.app.ProgressDialog
 import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
@@ -15,14 +16,22 @@ import kotlinx.coroutines.launch
 class RegistrationActivity : AppCompatActivity() {
     private lateinit var binding: ActivityRegistrationBinding
 
+
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityRegistrationBinding.inflate(layoutInflater)
+
         val view = binding.root
 
         setContentView(view)
 
-        binding.bottoneIscrizione.setOnClickListener { registrationUser() }
+        binding.bottoneIscrizione.setOnClickListener {
+
+            registrationUser()
+
+        }
 
         //Torna indietro nell'activity del login
         val actionBar = supportActionBar
@@ -32,16 +41,21 @@ class RegistrationActivity : AppCompatActivity() {
 
     fun registrationUser() {
         lifecycleScope.launch {
+            val progressDialog = ProgressDialog(this@RegistrationActivity)
             val mail = binding.emailInputRegistrazione.text.toString()
             val password = binding.passwordInputRegistrazione.text.toString()
             val nome = binding.nomeInputRegistrazione.text.toString()
             val cognome = binding.cognomeInputRegistrazione.text.toString()
+
+            progressDialog.setTitle("Loading")
+            progressDialog.show()
 
             when (val result = UserRepository.setUser(mail, password, nome, cognome)) {
                 is ApiRegistrationResult.Success -> {
                     // navigate to next screen with data
                     val intent = Intent(this@RegistrationActivity, RegistrationSuccessActivity::class.java)
                     intent.putExtra(RegistrationSuccessActivity.EXTRAKEY, nome)
+                    progressDialog.hide()
                     startActivity(intent)
                 }
                 is ApiRegistrationResult.Failure<*> -> {
@@ -54,5 +68,6 @@ class RegistrationActivity : AppCompatActivity() {
                 }
             }
         }
+
     }
 }

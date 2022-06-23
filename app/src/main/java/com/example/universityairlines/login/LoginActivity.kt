@@ -1,5 +1,6 @@
 package com.example.universityairlines.login
 
+import android.app.ProgressDialog
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -23,13 +24,13 @@ class LoginActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
 
         super.onCreate(savedInstanceState)
-
+        val progressDialog = ProgressDialog(this@LoginActivity)
 
        binding = LoginLayoutBinding.inflate(layoutInflater)
        val view = binding.root
        setContentView(view)
 
-       binding.loginbutton.setOnClickListener { checkUser() }
+       binding.loginbutton.setOnClickListener {checkUser()     }
 
     //Gestione comportamento bottone registrazione
         bottoneRegistrazione = binding.registerbutton
@@ -42,14 +43,20 @@ class LoginActivity : AppCompatActivity() {
 
    fun checkUser() {
        lifecycleScope.launch {
+           val progressDialog = ProgressDialog(this@LoginActivity)
            val mail = binding.edittextemail.text.toString()
            val pwd = binding.edittextpassword.text.toString()
+
+           progressDialog.setTitle("Loading")
+           progressDialog.show()
+
 
            when (val result = UserRepository.getUser(mail, pwd)) {
                is ApiResult.Success -> {
                    // navigate to next screen with data
                    val intent = Intent(this@LoginActivity, HomepageActivity::class.java)
                    intent.putExtra(EXTRAKEY, result.value.firstName)
+                   progressDialog.hide()
                    startActivity(intent)
                }
                is ApiResult.Failure -> {
