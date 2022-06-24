@@ -50,4 +50,5 @@
     <string name="check_in_effettuato">Check-in effettuato!</string>
     <string name="check_in_advise">"Ricorda di visionare il nostro\ndocumento informativo sui\nbagagli non ammessi."</string>
     <string name="volo">Volo</string>
+    <string name="reservation_list_shared_preferences">reservation_list_shared_preferences</string>
 </resources>

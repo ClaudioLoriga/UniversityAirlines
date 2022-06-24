@@ -77,7 +77,7 @@
  />
 
     <EditText
-        android:id="@+id/editTextTextMultiLine"
+        android:id="@+id/idCheckInInsert"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginVertical="@dimen/padding10"
@@ -98,7 +98,7 @@
         android:paddingHorizontal="@dimen/padding30"
         android:text="@string/cerca"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@id/editTextTextMultiLine" />
+        app:layout_constraintTop_toTopOf="@id/idCheckInInsert" />
 
     <Button
         android:id="@+id/buttonPrenotazione"
@@ -112,7 +112,7 @@
         android:textSize="@dimen/size20text"
         android:paddingTop="@dimen/padding15"
         android:paddingBottom="@dimen/padding15"
-        app:layout_constraintTop_toBottomOf="@+id/editTextTextMultiLine"/>
+        app:layout_constraintTop_toBottomOf="@+id/idCheckInInsert"/>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

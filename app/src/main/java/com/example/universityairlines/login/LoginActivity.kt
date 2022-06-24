@@ -61,6 +61,8 @@ class LoginActivity : AppCompatActivity() {
                     intent.putExtra(EXTRAKEY, result.value.firstName)
                     progressDialog.hide()
                     startActivity(intent)
+                    finish()
+
                 }
                 is ApiResult.Failure -> {
                     MaterialAlertDialogBuilder(this@LoginActivity)

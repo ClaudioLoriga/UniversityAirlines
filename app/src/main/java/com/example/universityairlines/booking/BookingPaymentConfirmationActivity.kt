@@ -1,5 +1,6 @@
 package com.example.universityairlines.booking
 
+import android.content.Context
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -11,9 +12,13 @@ import com.example.universityairlines.databinding.ActivityBookingPaymentConfirma
 import com.example.universityairlines.homepage.HomepageActivity
 import com.example.universityairlines.model.ApiResult
 import com.example.universityairlines.model.Flight
+import com.example.universityairlines.model.Reservation
 import com.example.universityairlines.ui.getString
+import com.fasterxml.jackson.core.type.TypeReference
+import com.fasterxml.jackson.module.kotlin.jacksonObjectMapper
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import kotlinx.coroutines.launch
+import java.util.*
 
 class BookingPaymentConfirmationActivity : AppCompatActivity() {
 
@@ -64,7 +69,31 @@ class BookingPaymentConfirmationActivity : AppCompatActivity() {
             intent.putExtra("pnr", binding.prenotationCode.text)
             startActivity(intent)
         }
+
+        val sharedPref = getPreferences(Context.MODE_PRIVATE) ?: return
+        val defaultValue = ""
+        val reservationListString = sharedPref.getString(getString(R.string.reservation_list_shared_preferences), defaultValue)
+        val mapper = jacksonObjectMapper()
+        var reservationList = mapper.readValue(reservationListString, object : TypeReference<MutableList<Reservation>>() {})
+
+
+        val departureDateSplitted = flight?.departureDate?.split(" ")
+        var date = departureDateSplitted?.get(0) ?: ""
+        var hour = departureDateSplitted?.get(1) ?: ""
+        val reservation = Reservation(pnr, flight?.origin ?: "", flight?.destination ?: "", date, hour)
+
+        //Aggiunta nella lista
+        reservationList.add(reservation)
+
+        //Aggiunta nelle shared preferences
+        with (sharedPref.edit()) {
+            putString(getString(R.string.reservation_list_shared_preferences), mapper.writeValueAsString(reservationList))
+            apply()
+        }
+
     }
+
+
 
     companion object {
         const val EXTRAKEY_PNR = "pnr"
