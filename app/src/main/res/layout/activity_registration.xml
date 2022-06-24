@@ -99,10 +99,12 @@
         android:padding="@dimen/padding15"
         android:layout_margin="@dimen/padding40"/>
 
+
     <CheckBox
+        android:id="@+id/terminiCondizioni"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Ho letto termini e condizioni"
+        android:text="@string/terminiecondizioni"
         app:layout_constraintTop_toBottomOf="@id/passwordInputRegistrazione"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
