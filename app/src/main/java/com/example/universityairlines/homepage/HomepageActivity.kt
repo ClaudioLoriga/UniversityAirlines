@@ -16,10 +16,11 @@ class HomepageActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityHomepageBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        setSupportActionBar(binding.toolbar)
+
         val stringName = intent.getStringExtra(EXTRAKEY)
         val stringHomePage = resources.getString(R.string.welcome_user, stringName)
-        //val flightSelected = intent.extras?.getParcelable<Flight>("flight")
-        //val pnr = intent.getStringExtra("pnr").orEmpty()
         binding.textView.text = stringHomePage
 
         binding.buttonPrenotazione.setOnClickListener {

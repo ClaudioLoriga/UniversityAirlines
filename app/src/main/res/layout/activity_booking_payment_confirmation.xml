@@ -36,7 +36,7 @@
         android:layout_width="150dp"
         android:layout_height="150dp"
         android:layout_marginStart="@dimen/padding30"
-        android:src="@drawable/free_airplane_jet_icon_1764_thumb"
+        android:src="@drawable/airplane_icon"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/subPresentationTextView" />
 

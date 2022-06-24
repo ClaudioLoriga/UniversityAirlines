@@ -6,7 +6,19 @@
     android:layout_height="match_parent"
     tools:context=".homepage.HomepageActivity">
 
+    <com.google.android.material.appbar.MaterialToolbar
+        android:id="@+id/toolbar"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_width="match_parent"
+        android:layout_height="?actionBarSize"
+        app:navigationIcon="@drawable/airplane_icon_small"
+        app:title="University Airlines"
+        />
+
     <TextView
+        app:layout_constraintTop_toBottomOf="@id/toolbar"
         android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -14,7 +26,6 @@
         android:textColor="@color/blue_app"
         android:textSize="@dimen/size28text"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
         tools:text="Ciao, Mario \n\nEsplora" />
 
     <ImageView

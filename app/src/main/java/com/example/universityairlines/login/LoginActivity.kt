@@ -64,6 +64,7 @@ class LoginActivity : AppCompatActivity() {
                         .setMessage(
                             result.errorResponse?.message ?: "User Not Found"
                         ).show()
+                    binding.loginbutton.isEnabled = true
                 }
             }
         }
