@@ -11,7 +11,8 @@
     <string name="login">Login</string>
     <string name="no_account_register">Non hai un account? Registrati</string>
     <string name="registrazione">Registrazione</string>
-    <string name="terminiecondizioni">Confermo di aver letto il regolamento e accetto i %1$s</string>
+    <string name="terminiecondizioni_base">Confermo di aver letto il regolamento e accetto i Termini e Condizioni</string>
+    <string name="terminiecondizioni">Termini e Condizioni</string>
     <string name="gotohomepage">Vai alla homepage</string>
     <string name="attenzione">Attenzione!</string>
     <string name="problema_riprovare">C\'è stato un problema durante la registrazione. \n Si prega di riprovare.</string>
