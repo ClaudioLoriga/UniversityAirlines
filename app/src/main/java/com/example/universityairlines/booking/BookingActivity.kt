@@ -4,6 +4,7 @@ import android.app.Activity
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import androidx.activity.result.contract.ActivityResultContracts
 import com.example.universityairlines.booking.BookingFlightsListActivity.Companion.EXTRAKEY_ANDATA
 import com.example.universityairlines.booking.BookingFlightsListActivity.Companion.EXTRAKEY_DESTINAZIONE
@@ -13,17 +14,14 @@ import com.example.universityairlines.booking.BookingFlightsListActivity.Compani
 import com.example.universityairlines.databinding.BookingFormLayoutBinding
 import com.google.android.material.datepicker.MaterialDatePicker
 import com.example.universityairlines.ui.toPrettyDate
+import com.google.android.material.datepicker.CalendarConstraints
+import com.google.android.material.datepicker.DateValidatorPointBackward
+import com.google.android.material.datepicker.DateValidatorPointForward
 
 class BookingActivity : AppCompatActivity() {
 
 
     private lateinit var binding: BookingFormLayoutBinding
-    private val pickerAndata by lazy {
-        MaterialDatePicker.Builder.datePicker()
-            .setTitleText("Seleziona data")
-            .setSelection(MaterialDatePicker.todayInUtcMilliseconds())
-            .build()
-    }
     var resultLauncherOrigine =
         registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
             if ((result.resultCode == Activity.RESULT_OK) && result != null) {
@@ -43,6 +41,9 @@ class BookingActivity : AppCompatActivity() {
 
             }
         }
+
+    private var minDate: Long = -1L
+    private var maxDate: Long = -1L
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -64,19 +65,44 @@ class BookingActivity : AppCompatActivity() {
         }
 
         binding.edittextandata.setOnClickListener {
-            pickerAndata.clearOnPositiveButtonClickListeners()
-            pickerAndata.addOnPositiveButtonClickListener {
-                binding.edittextandata.setText(it.toPrettyDate())
-            }
-            pickerAndata.show(supportFragmentManager, null)
+            MaterialDatePicker.Builder.datePicker()
+                .setTitleText("Seleziona data")
+                .setSelection(MaterialDatePicker.todayInUtcMilliseconds())
+                .apply {
+                    if (maxDate != -1L) {
+                        val constraints: CalendarConstraints = CalendarConstraints.Builder().setValidator(DateValidatorPointBackward.before(maxDate)).build()
+                        setCalendarConstraints(constraints)
+                    }
+                }
+                .build()
+                .apply {
+                    addOnPositiveButtonClickListener {
+                        binding.edittextandata.setText(it.toPrettyDate())
+                        minDate = it
+                    }
+                    show(supportFragmentManager, null)
+                }
         }
 
         binding.edittextritorno.setOnClickListener {
-            pickerAndata.clearOnPositiveButtonClickListeners()
-            pickerAndata.addOnPositiveButtonClickListener {
-                binding.edittextritorno.setText(it.toPrettyDate())
-            }
-            pickerAndata.show(supportFragmentManager, null)
+            MaterialDatePicker.Builder.datePicker()
+                .setTitleText("Seleziona data")
+                .setSelection(MaterialDatePicker.todayInUtcMilliseconds())
+                .apply {
+                    if (minDate != -1L) {
+                        Log.v("BookingActivity","$minDate 455332" )
+                        val constraints: CalendarConstraints = CalendarConstraints.Builder().setValidator(DateValidatorPointForward.from(minDate)).build()
+                        setCalendarConstraints(constraints)
+                    }
+                }
+                .build()
+                .apply {
+                    addOnPositiveButtonClickListener {
+                        binding.edittextritorno.setText(it.toPrettyDate())
+                        maxDate = it
+                    }
+                    show(supportFragmentManager, null)
+                }
         }
 
         binding.minusbutton.setOnClickListener {
