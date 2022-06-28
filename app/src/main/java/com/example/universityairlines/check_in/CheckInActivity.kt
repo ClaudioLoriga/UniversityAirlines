@@ -26,9 +26,7 @@ class CheckInActivity : AppCompatActivity() {
 
         var selectedCode = intent.getStringExtra("code").toString()
         var selectedReservation = Reservation("", "", "", "", "", false, "")
-        val sharedPref =
-            getSharedPreferences(getString(R.string.shared_preferences), Context.MODE_PRIVATE)
-                ?: return
+        val sharedPref = getSharedPreferences(getString(R.string.shared_preferences), Context.MODE_PRIVATE) ?: return
         val defaultValue = ""
         val reservationListString = sharedPref.getString(
             getString(R.string.reservation_list_shared_preferences),

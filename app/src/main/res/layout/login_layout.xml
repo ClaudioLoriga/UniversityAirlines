@@ -51,6 +51,7 @@
         android:padding="@dimen/padding15"
         android:text="@string/login"
         android:textSize="@dimen/size20text"
+        android:enabled="false"
         app:layout_constraintTop_toBottomOf="@id/edittextpassword" />
 
     <TextView
