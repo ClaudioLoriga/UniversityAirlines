@@ -12,6 +12,7 @@ import com.example.universityairlines.model.Reservation
 import com.example.universityairlines.ui.getString
 import com.fasterxml.jackson.core.type.TypeReference
 import com.fasterxml.jackson.module.kotlin.jacksonObjectMapper
+import com.google.android.material.dialog.MaterialAlertDialogBuilder
 
 class CheckInActivity : AppCompatActivity() {
 
@@ -23,76 +24,81 @@ class CheckInActivity : AppCompatActivity() {
         binding = ActivityCheckInBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        //val flightSelected = intent.extras?.getParcelable<Flight>("flight")
-        val selectedCode = intent.getStringExtra("code").orEmpty()
-
-
-        val sharedPref = getPreferences(Context.MODE_PRIVATE) ?: return
+        var selectedCode = intent.getStringExtra("code").toString()
+        var selectedReservation = Reservation("", "", "", "", "", false, "")
+        val sharedPref =
+            getSharedPreferences(getString(R.string.shared_preferences), Context.MODE_PRIVATE)
+                ?: return
         val defaultValue = ""
         val reservationListString = sharedPref.getString(
             getString(R.string.reservation_list_shared_preferences),
             defaultValue
         )
         val mapper = jacksonObjectMapper()
-        var reservationList = mapper.readValue(
-            reservationListString,
-            object : TypeReference<MutableList<Reservation>>() {})
 
+        if (reservationListString != "") {
+            var reservationList = mapper.readValue(
+                reservationListString,
+                object : TypeReference<MutableList<Reservation>>() {})
 
-        reservationList.forEach { reservation ->
-            if (reservation.code == selectedCode) {
+            reservationList.forEach { reservation ->
+                if (reservation.code == selectedCode) {
 
-                with(binding.buyedFlight) {
-                    /*andataTextView.text = binding.getString(
-                        R.string.airport_description,
-                        flight.origin,
-                        flight.originIata
-                    )*/
-                    /*ritornoTextView.text = binding.getString(
-                        R.string.airport_description,
-                        flight.destination,
-                        flight.destinationIata
-                    )*/
-                    dataTextView.text =
-                        binding.getString(R.string.booking_details_flight, "Data", reservation.date)
-                    oraTextView.text =
-                        binding.getString(R.string.booking_details_flight, "Ora", reservation.hour)
+                    with(binding.buyedFlight) {
+                        andataTextView.text = binding.getString(
+                            R.string.booking_details_flight,
+                            "Origine",
+                            reservation.origin
+                        )
+                        ritornoTextView.text = binding.getString(
+                            R.string.booking_details_flight,
+                            "Destinazione",
+                            reservation.destination
+                        )
+                        dataTextView.text =
+                            binding.getString(
+                                R.string.booking_details_flight,
+                                "Data",
+                                reservation.date
+                            )
+                        oraTextView.text =
+                            binding.getString(
+                                R.string.booking_details_flight,
+                                "Ora",
+                                reservation.hour
+                            )
+                    }
 
+                    selectedReservation = reservation
                 }
             }
-
-
+        } else{
+            MaterialAlertDialogBuilder(this@CheckInActivity)
+                .setTitle("VOLO NON TROVATO")
+                .setPositiveButton(
+                    "Ok"
+                ) { dialog, which -> dialog?.dismiss() }
+                .setMessage(
+                    "Non sono presenti voli"
+                ).show()
         }
 
-
-
-    /* if (flightSelected != null) {
-             val (data, ora) = flightSelected.departureDate.split(" ")
-             with(binding.buyedFlight) {
-                 andataTextView.text = binding.getString(
-                     R.string.airport_description,
-                     flightSelected.origin,
-                     flightSelected.originIata
-                 )
-                 ritornoTextView.text = binding.getString(
-                     R.string.airport_description,
-                     flightSelected.destination,
-                     flightSelected.destinationIata
-                 )
-                 dataTextView.text =
-                     binding.getString(R.string.booking_details_flight, "Data", data)
-                 oraTextView.text =
-                     binding.getString(R.string.booking_details_flight, "Ora", ora)
-             }
-         }
-
-         */
-
         binding.effettuaCheckInButton.setOnClickListener {
-            val intent = Intent(this, CheckInConfirmedActivity::class.java)
-            //intent.putExtra("flight", flightSelected)
-            //intent.putExtra("pnr", pnr)
-            startActivity(intent)
+
+            if (!selectedReservation.checkin) {
+                val intent = Intent(this, CheckInConfirmedActivity::class.java)
+                intent.putExtra("code", selectedCode)
+                startActivity(intent)
+            } else {
+                MaterialAlertDialogBuilder(this@CheckInActivity)
+                    .setTitle("CHECK-IN GIÀ EFFETTUATO")
+                    .setPositiveButton(
+                        "Ok"
+                    ) { dialog, which -> dialog?.dismiss() }
+                    .setMessage(
+                        "Il check-in per questo volo risulta già effettuato"
+                    ).show()
+            }
         }
     }
 }

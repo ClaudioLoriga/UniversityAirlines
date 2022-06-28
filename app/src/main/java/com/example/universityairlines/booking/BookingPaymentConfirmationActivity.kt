@@ -70,30 +70,63 @@ class BookingPaymentConfirmationActivity : AppCompatActivity() {
             startActivity(intent)
         }
 
-        val sharedPref = getPreferences(Context.MODE_PRIVATE) ?: return
-        val defaultValue = ""
-        val reservationListString = sharedPref.getString(getString(R.string.reservation_list_shared_preferences), defaultValue)
-        val mapper = jacksonObjectMapper()
-        var reservationList = mapper.readValue(reservationListString, object : TypeReference<MutableList<Reservation>>() {})
-
-
         val departureDateSplitted = flight?.departureDate?.split(" ")
         var date = departureDateSplitted?.get(0) ?: ""
         var hour = departureDateSplitted?.get(1) ?: ""
-        val reservation = Reservation(pnr, flight?.origin ?: "", flight?.destination ?: "", date, hour)
+        val reservation = Reservation(
+            pnr,
+            flight?.origin ?: "",
+            flight?.destination ?: "",
+            date,
+            hour,
+            false,
+            totalToPay
+        )
 
-        //Aggiunta nella lista
-        reservationList.add(reservation)
+        val sharedPref =
+            getSharedPreferences(getString(R.string.shared_preferences), Context.MODE_PRIVATE)
+                ?: return
+        val defaultValue = ""
+        val reservationListString = sharedPref.getString(
+            getString(R.string.reservation_list_shared_preferences),
+            defaultValue
+        )
+        val mapper = jacksonObjectMapper()
 
-        //Aggiunta nelle shared preferences
-        with (sharedPref.edit()) {
-            putString(getString(R.string.reservation_list_shared_preferences), mapper.writeValueAsString(reservationList))
-            apply()
+        if (reservationListString != "") {
+            var reservationList = mapper.readValue(
+                reservationListString,
+                object : TypeReference<MutableList<Reservation>>() {})
+
+            //Aggiunta nella lista
+            reservationList.add(reservation)
+
+            //Aggiunta nelle shared preferences
+            with(sharedPref.edit()) {
+                putString(
+                    getString(R.string.reservation_list_shared_preferences),
+                    mapper.writeValueAsString(reservationList)
+                )
+                apply()
+            }
+
+        } else {
+
+            var reservationList: MutableList<Reservation> = mutableListOf<Reservation>()
+            reservationList.add(reservation)
+
+
+            with(sharedPref.edit()) {
+                putString(
+                    getString(R.string.reservation_list_shared_preferences),
+                    mapper.writeValueAsString(reservationList)
+                )
+                apply()
+            }
+
+
         }
-
     }
-
-
 
     companion object {
         const val EXTRAKEY_PNR = "pnr"

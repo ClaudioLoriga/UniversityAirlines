@@ -9,5 +9,7 @@ data class Reservation(
    val origin: String,
    val destination: String,
    val date: String,
-   val hour: String
+   val hour: String,
+   var checkin: Boolean,
+   var totalPrice: String
 ): Parcelable

@@ -18,9 +18,10 @@ class HomepageActivity : AppCompatActivity() {
         setContentView(binding.root)
         val stringName = intent.getStringExtra(EXTRAKEY)
         val stringHomePage = resources.getString(R.string.welcome_user, stringName)
-        val code = binding.idCheckInInsert.text.toString()
+
+
         //val flightSelected = intent.extras?.getParcelable<Flight>("flight")
-        //val pnr = intent.getStringExtra("pnr").orEmpty()
+
         binding.textView.text = stringHomePage
 
         binding.buttonPrenotazione.setOnClickListener {
@@ -29,6 +30,7 @@ class HomepageActivity : AppCompatActivity() {
         }
 
         binding.buttonCerca.setOnClickListener {
+            val code = binding.idCheckInInsert.text.toString()
             val intent = Intent(this, CheckInActivity::class.java)
             intent.putExtra("code", code)
             startActivity(intent)
