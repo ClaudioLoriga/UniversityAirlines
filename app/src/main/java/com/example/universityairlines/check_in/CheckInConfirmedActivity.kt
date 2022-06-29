@@ -43,7 +43,7 @@ class CheckInConfirmedActivity : AppCompatActivity() {
                 object : TypeReference<MutableList<Reservation>>() {})
 
             reservationList.forEach { reservation ->
-                if (reservation.code == codeForCheckin) {
+                if (reservation.code.uppercase() == codeForCheckin.uppercase()) {
 
                     with(binding.confirmedCheckIn.buyedFlight) {
                         andataTextView.text = binding.confirmedCheckIn.buyedFlight.getString(

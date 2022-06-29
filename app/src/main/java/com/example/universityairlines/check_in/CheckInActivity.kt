@@ -7,6 +7,7 @@ import android.os.Bundle
 import android.widget.Button
 import com.example.universityairlines.R
 import com.example.universityairlines.databinding.ActivityCheckInBinding
+import com.example.universityairlines.homepage.HomepageActivity
 import com.example.universityairlines.model.Flight
 import com.example.universityairlines.model.Reservation
 import com.example.universityairlines.ui.getString
@@ -37,13 +38,14 @@ class CheckInActivity : AppCompatActivity() {
         val mapper = jacksonObjectMapper()
 
         if (reservationListString != "") {
+            var flag = false
             var reservationList = mapper.readValue(
                 reservationListString,
                 object : TypeReference<MutableList<Reservation>>() {})
 
             reservationList.forEach { reservation ->
-                if (reservation.code == selectedCode) {
-
+                if (reservation.code.uppercase() == selectedCode.uppercase()) {
+                    //flag = true
                     with(binding.buyedFlight) {
                         andataTextView.text = binding.getString(
                             R.string.booking_details_flight,
@@ -70,6 +72,20 @@ class CheckInActivity : AppCompatActivity() {
                     }
 
                     selectedReservation = reservation
+                }
+
+                if(!flag){
+                    MaterialAlertDialogBuilder(this@CheckInActivity)
+                        .setTitle("VOLO NON TROVATO")
+                        .setPositiveButton(
+                            "Ok"
+                        ) { dialog, which -> dialog?.dismiss() }
+                        .setMessage(
+                            "Il volo cercato non è presente o non esiste"
+                        ).show()
+
+
+
                 }
             }
         } else{
