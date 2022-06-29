@@ -32,6 +32,10 @@ class BookingAirportList : AppCompatActivity() {
 
 
         lifecycleScope.launch {
+            val progressDialog = ProgressDialog(this@BookingAirportList)
+            progressDialog.setTitle("Loading")
+            progressDialog.show()
+
             val response = UserRepository.getAirports(
                 "code",
                 "name",
@@ -42,6 +46,7 @@ class BookingAirportList : AppCompatActivity() {
                 "continent"
             )
 
+            progressDialog.hide()
             when (response) {
                 is ApiResult.Success -> {
                     adapter = AirportAdapter(response.value.airports, ::getAirportName)

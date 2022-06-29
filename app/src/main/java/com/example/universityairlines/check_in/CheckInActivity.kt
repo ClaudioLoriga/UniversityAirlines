@@ -43,7 +43,7 @@ class CheckInActivity : AppCompatActivity() {
 
             reservationList.forEach { reservation ->
                 if (reservation.code.uppercase() == selectedCode.uppercase()) {
-                    //flag = true
+                    flag = true
                     with(binding.buyedFlight) {
                         andataTextView.text = binding.getString(
                             R.string.booking_details_flight,
@@ -81,8 +81,6 @@ class CheckInActivity : AppCompatActivity() {
                         .setMessage(
                             "Il volo cercato non è presente o non esiste"
                         ).show()
-
-
 
                 }
             }

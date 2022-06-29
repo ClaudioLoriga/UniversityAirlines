@@ -1,5 +1,6 @@
 package com.example.universityairlines.booking
 
+import android.app.ProgressDialog
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -35,6 +36,9 @@ class BookingFlightsListActivity : AppCompatActivity() {
         val stringPasseggeri = intent.getStringExtra(EXTRAKEY_PASSEGGERI).orEmpty()
 
         lifecycleScope.launch {
+            val progressDialog = ProgressDialog(this@BookingFlightsListActivity)
+            progressDialog.setTitle("Loading")
+            progressDialog.show()
             val response = UserRepository.getFlights(
                 stringOrigine,
                 stringDestinazione,
@@ -44,6 +48,7 @@ class BookingFlightsListActivity : AppCompatActivity() {
             )
             binding.recyclerView.layoutManager = layoutManager
 
+            progressDialog.hide()
             when (response) {
                 is ApiResult.Success -> {
                     adapter = BookingFlightListAdapter(
