@@ -16,12 +16,14 @@ import android.view.View
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat.startActivity
+import androidx.core.widget.doOnTextChanged
 import androidx.lifecycle.lifecycleScope
 import com.example.universityairlines.R
 import com.example.universityairlines.repository.UserRepository
 import com.example.universityairlines.databinding.ActivityRegistrationBinding
 import com.example.universityairlines.login.LoginActivity
 import com.example.universityairlines.model.ApiRegistrationResult
+import com.example.universityairlines.validation.setupValidation
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import kotlinx.coroutines.launch
 
@@ -50,8 +52,10 @@ class RegistrationActivity : AppCompatActivity() {
             resources.getString(R.string.terminiecondizioni) to ::openWebsite,
             showUnderLine = true
         )
+        with(binding) {
+            setupValidation(bottoneIscrizione, nomeInputRegistrazione, cognomeInputRegistrazione, passwordInputRegistrazione, emailInputRegistrazione)
+        }
     }
-
 
     private fun registrationUser() {
         lifecycleScope.launch {
@@ -86,11 +90,6 @@ class RegistrationActivity : AppCompatActivity() {
                 }
             }
         }
-    }
-
-    override fun onStart() {
-        super.onStart()
-        binding.bottoneIscrizione.isEnabled = true
     }
 
     // Hyperlink

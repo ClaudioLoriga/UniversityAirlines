@@ -124,6 +124,7 @@
         android:padding="@dimen/padding15"
         android:text="@string/paga_ora"
         android:textSize="@dimen/size20text"
+        android:enabled="false"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />

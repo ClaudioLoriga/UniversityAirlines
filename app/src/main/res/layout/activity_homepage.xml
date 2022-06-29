@@ -110,6 +110,7 @@
                 android:backgroundTint="@color/blue_app"
                 android:paddingHorizontal="@dimen/padding30"
                 android:text="@string/cerca"
+                android:enabled="false"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="@id/idCheckInInsert" />
 

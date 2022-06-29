@@ -14,6 +14,7 @@ import com.example.universityairlines.model.ApiResult
 import com.example.universityairlines.model.Flight
 import com.example.universityairlines.model.Passenger
 import com.example.universityairlines.ui.getString
+import com.example.universityairlines.validation.setupValidation
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import kotlinx.coroutines.launch
 
@@ -140,10 +141,9 @@ class BookingPaymentActivity : AppCompatActivity() {
                 flight.price.toString()
             )
         }
+        with(binding) {
+            setupValidation(buttonPay, cardNumberEditText, cvvEditText, expireEditText)
+        }
     }
 
-    override fun onStart() {
-        super.onStart()
-        binding.buttonPay.isEnabled = true
-    }
 }
