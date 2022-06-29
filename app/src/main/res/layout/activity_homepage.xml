@@ -5,11 +5,10 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-
     <com.google.android.material.appbar.MaterialToolbar
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
-        android:layout_height="?actionBarSize"
+        android:layout_height="?android:actionBarSize"
         android:background="@color/blue_app"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -29,6 +28,13 @@
             android:layout_height="wrap_content"
             tools:context=".homepage.HomepageActivity">
 
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/guideline"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_percent="0.5" />
+
             <TextView
                 android:id="@+id/textView"
                 android:layout_width="wrap_content"
@@ -42,38 +48,37 @@
 
             <ImageView
                 android:id="@+id/immagine1"
-                android:layout_width="125dp"
+                android:layout_width="100dp"
                 android:layout_height="100dp"
-                android:layout_margin="@dimen/padding20"
-                app:layout_constraintEnd_toStartOf="@id/immagine2"
-                app:layout_constraintStart_toStartOf="parent"
+                android:layout_margin="@dimen/padding30"
+                app:layout_constraintEnd_toStartOf="@id/guideline"
                 app:layout_constraintTop_toBottomOf="@id/textView"
                 app:srcCompat="@drawable/roma" />
 
             <ImageView
                 android:id="@+id/immagine2"
-                android:layout_width="125dp"
+                android:layout_width="100dp"
                 android:layout_height="100dp"
-                android:layout_marginHorizontal="@dimen/padding20"
-                app:layout_constraintStart_toEndOf="@id/immagine1"
-                app:layout_constraintTop_toTopOf="@id/immagine1"
+                android:layout_margin="@dimen/padding30"
+                app:layout_constraintStart_toEndOf="@id/guideline"
+                app:layout_constraintTop_toBottomOf="@id/textView"
                 app:srcCompat="@drawable/usa" />
 
             <ImageView
                 android:id="@+id/immagine3"
-                android:layout_width="125dp"
+                android:layout_width="100dp"
                 android:layout_height="100dp"
-                android:layout_margin="@dimen/padding20"
-                app:layout_constraintStart_toStartOf="parent"
+                android:layout_margin="@dimen/padding30"
+                app:layout_constraintEnd_toStartOf="@id/guideline"
                 app:layout_constraintTop_toBottomOf="@id/immagine1"
                 app:srcCompat="@drawable/londra" />
 
             <ImageView
                 android:id="@+id/immagine4"
-                android:layout_width="125dp"
+                android:layout_width="100dp"
                 android:layout_height="100dp"
-                android:layout_margin="@dimen/padding20"
-                app:layout_constraintStart_toEndOf="@id/immagine3"
+                android:layout_margin="@dimen/padding30"
+                app:layout_constraintStart_toEndOf="@id/guideline"
                 app:layout_constraintTop_toBottomOf="@id/immagine2"
                 app:srcCompat="@drawable/parigi" />
 
@@ -105,19 +110,18 @@
             <Button
                 android:id="@+id/buttonCerca"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="0dp"
                 android:layout_marginHorizontal="@dimen/padding10"
-                android:backgroundTint="@color/blue_app"
                 android:paddingHorizontal="@dimen/padding30"
                 android:text="@string/cerca"
                 android:enabled="false"
+                tools:enabled="true"
+                app:layout_constraintBottom_toBottomOf="@id/idCheckInInsert"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="@id/idCheckInInsert" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
-
     </ScrollView>
-
 
     <Button
         android:id="@+id/buttonPrenotazione"
@@ -126,14 +130,11 @@
         android:layout_margin="@dimen/padding40"
         android:gravity="center_horizontal"
         android:padding="@dimen/padding15"
-        android:text="@string/prenota_volo"
-        android:textSize="@dimen/size20text"
-
         android:paddingTop="@dimen/padding15"
         android:paddingBottom="@dimen/padding15"
-        app:layout_constraintTop_toBottomOf="@+id/idCheckInInsert"/>
-
-        app:layout_constraintBottom_toBottomOf="parent" />
-
+        android:text="@string/prenota_volo"
+        android:textSize="@dimen/size20text"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/idCheckInInsert" />
 
 </LinearLayout>

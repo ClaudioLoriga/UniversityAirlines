@@ -50,6 +50,7 @@
         <activity
             android:name=".booking.BookingActivity"
             android:parentActivityName=".homepage.HomepageActivity" />
+
         <activity android:name=".homepage.HomepageActivity"
             android:theme="@style/Theme.UniversityAirlines.NoActionBar"/>
         <activity

@@ -18,7 +18,6 @@ class HomepageActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityHomepageBinding.inflate(layoutInflater)
         setContentView(binding.root)
-
         setSupportActionBar(binding.toolbar)
 
         val sharedPref = getSharedPreferences(getString(R.string.shared_preferences), Context.MODE_PRIVATE) ?: return
@@ -47,4 +46,5 @@ class HomepageActivity : AppCompatActivity() {
     companion object {
         const val EXTRAKEY = "username"
     }
+
 }

@@ -31,7 +31,7 @@
         <item name="android:windowContentOverlay">@null</item>
     </style>
 
-    <style name ="Theme.UniversityAirlines.NoActionBar" parent="Theme.AppCompat.DayNight.NoActionBar">
+    <style name ="Theme.UniversityAirlines.NoActionBar" parent="Theme.UniversityAirlines">
         <!-- Primary brand color. -->
         <item name="colorPrimary">@color/blue_app</item>
         <item name="colorPrimaryVariant">@color/purple_700</item>
@@ -42,6 +42,7 @@
         <item name="colorOnSecondary">@color/white</item>
         <!-- Status bar color. -->
         <item name="android:statusBarColor" >?attr/colorPrimaryVariant</item>
-        <item name="android:windowActionBar">false</item>
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
     </style>
 </resources>
